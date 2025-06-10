@@ -1,40 +1,42 @@
+
+import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { FileJson, ShieldAlert, Aperture, LineChart, Lightbulb, Puzzle } from 'lucide-react';
 import AnimatedElement from './AnimatedElement';
 
 const useCases = [
   {
-    icon: FileJson,
+    iconComponent: FileJson, // Renamed from icon to avoid conflict if we pass it down
     title: 'Smart Contract Creation',
     description: 'Effortlessly generate custom smart contracts for various blockchain platforms.',
     imageHint: "code interface contract"
   },
   {
-    icon: ShieldAlert,
+    iconComponent: ShieldAlert,
     title: 'Security Auditing',
     description: 'Leverage AI to identify potential vulnerabilities in your smart contracts.',
     imageHint: "security shield code"
   },
   {
-    icon: Aperture,
+    iconComponent: Aperture,
     title: 'NFT Generation & Art',
     description: 'Create unique digital art and NFT collections with AI-powered tools.',
     imageHint: "abstract art digital"
   },
   {
-    icon: LineChart,
+    iconComponent: LineChart,
     title: 'Market Trend Analysis',
     description: 'Utilize AI for predictive analysis and insights into crypto market trends.',
     imageHint: "data chart graph"
   },
   {
-    icon: Lightbulb,
+    iconComponent: Lightbulb,
     title: 'Web3 Project Ideation',
     description: 'Brainstorm and validate new Web3 project ideas with AI assistance.',
     imageHint: "innovation lightbulb tech"
   },
   {
-    icon: Puzzle,
+    iconComponent: Puzzle,
     title: 'dApp Development',
     description: 'Streamline decentralized application development with AI-powered coding tools.',
     imageHint: "puzzle pieces connection"
@@ -57,9 +59,14 @@ export default function UseCasesSection() {
           {useCases.map((useCase, index) => (
             <AnimatedElement key={index} delay={`delay-${index * 100}`}>
               <Card className="h-full shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card transform hover:-translate-y-1 overflow-hidden">
-                {/* Placeholder for image, similar to chaingpt.org's use case cards */}
-                <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
-                   <useCase.icon className="h-16 w-16 text-primary/50" />
+                <div className="relative w-full h-48">
+                  <Image
+                    src={`https://placehold.co/288x192.png?a=uc${index}`}
+                    alt={useCase.title}
+                    layout="fill"
+                    objectFit="cover"
+                    data-ai-hint={useCase.imageHint}
+                  />
                 </div>
                 <CardHeader>
                   <CardTitle className="font-headline text-xl">{useCase.title}</CardTitle>
