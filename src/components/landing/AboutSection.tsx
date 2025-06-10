@@ -11,7 +11,7 @@ export default function ProblemSolutionSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* The Problem */}
           <AnimatedElement className="md:pr-6">
-            <Card className="bg-card/50 backdrop-blur-sm shadow-xl border-destructive/30">
+            <Card className="bg-card/50 backdrop-blur-sm shadow-xl border-destructive/30 transition-all duration-300 hover:shadow-destructive/40 hover:border-destructive/60 transform hover:-translate-y-1">
               <CardContent className="p-6 md:p-8">
                 <div className="relative aspect-[16/10] w-full mx-auto md:mx-0 rounded-lg overflow-hidden mb-6">
                   <Image
@@ -20,7 +20,7 @@ export default function ProblemSolutionSection() {
                     layout="fill"
                     objectFit="cover"
                     className="rounded-lg"
-                    data-ai-hint="chaotic crypto chart"
+                    data-ai-hint="chaotic stock charts"
                   />
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground mb-6">
@@ -35,7 +35,7 @@ export default function ProblemSolutionSection() {
 
           {/* The Solution */}
           <AnimatedElement className="md:pl-6" delay="delay-200">
-            <Card className="bg-card/50 backdrop-blur-sm shadow-xl border-primary/30">
+            <Card className="bg-card/50 backdrop-blur-sm shadow-xl border-primary/30 transition-all duration-300 hover:shadow-primary/40 hover:border-primary/60 transform hover:-translate-y-1">
               <CardContent className="p-6 md:p-8">
                  <div className="relative aspect-[16/10] w-full mx-auto md:mx-0 rounded-lg overflow-hidden mb-6">
                   <Image
@@ -44,7 +44,7 @@ export default function ProblemSolutionSection() {
                     layout="fill"
                     objectFit="cover"
                     className="rounded-lg"
-                    data-ai-hint="futuristic trading interface"
+                    data-ai-hint="sleek data analysis"
                   />
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground mb-6">

@@ -4,12 +4,12 @@ import AnimatedElement from './AnimatedElement';
 
 // Updated to be "Social Proof Bar"
 const partnerLogos = [
-  { src: 'https://placehold.co/150x60.png?text=CoinDesk', alt: 'CoinDesk Logo', hint: "media logo" },
-  { src: 'https://placehold.co/150x60.png?text=Decrypt', alt: 'Decrypt Logo', hint: "crypto news" },
-  { src: 'https://placehold.co/150x60.png?text=TechCrunch', alt: 'TechCrunch Logo', hint: "tech journal" },
-  { src: 'https://placehold.co/150x60.png?text=Solana', alt: 'Solana Logo', hint: "blockchain logo" },
-  { src: 'https://placehold.co/150x60.png?text=Raydium', alt: 'Raydium Logo', hint: "launchpad logo" },
-  { src: 'https://placehold.co/150x60.png?text=Partner+6', alt: 'Partner Logo 6', hint: "finance logo" },
+  { src: 'https://placehold.co/150x60.png', alt: 'CoinDesk Logo', hint: "financial news" },
+  { src: 'https://placehold.co/150x60.png', alt: 'Decrypt Logo', hint: "crypto publication" },
+  { src: 'https://placehold.co/150x60.png', alt: 'TechCrunch Logo', hint: "tech news" },
+  { src: 'https://placehold.co/150x60.png', alt: 'Solana Logo', hint: "blockchain platform" },
+  { src: 'https://placehold.co/150x60.png', alt: 'Raydium Logo', hint: "defi launchpad" },
+  { src: 'https://placehold.co/150x60.png', alt: 'Venture Capital Logo', hint: "venture capital" },
 ];
 
 export default function SocialProofBar() { // Renamed component
@@ -26,10 +26,10 @@ export default function SocialProofBar() { // Renamed component
             {partnerLogos.map((logo, index) => (
               <div key={index} className="flex justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 transform hover:scale-110">
                 <Image
-                  src={logo.src} // Using placeholder for now
+                  src={logo.src}
                   alt={logo.alt}
                   width={150}
-                  height={50} // Adjusted height for better consistency
+                  height={50} 
                   objectFit="contain"
                   data-ai-hint={logo.hint}
                 />

@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -14,7 +15,7 @@ export default function Hero() {
           alt="Abstract quantum wave patterns or neural network"
           layout="fill"
           objectFit="cover"
-          data-ai-hint="quantum abstract background"
+          data-ai-hint="quantum data flow"
           priority
           className="filter brightness-50"
         />

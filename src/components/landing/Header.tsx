@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -37,19 +38,19 @@ export default function Header() {
             <span className="text-2xl font-bold font-headline text-foreground">BlockSmithAI</span>
           </Link>
 
-          <nav className="hidden md:flex space-x-6 items-center">
+          <nav className="hidden md:flex space-x-1 items-center">
             {navigationItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                className="text-sm font-medium text-foreground hover:text-primary hover:bg-accent/10 px-3 py-2 rounded-md transition-all duration-200"
               >
                 {item.name}
               </Link>
             ))}
-            <Button 
-              variant="default" 
-              className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground"
+            <Button
+              variant="default"
+              className="ml-4 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground"
               onClick={() => {
                 const whitelistSection = document.getElementById('whitelist-gate');
                 if (whitelistSection) {
@@ -84,8 +85,8 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
-            <Button 
-              variant="default" 
+            <Button
+              variant="default"
               className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground"
               onClick={() => {
                 setIsMobileMenuOpen(false);
