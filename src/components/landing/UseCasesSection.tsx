@@ -6,7 +6,7 @@ import AnimatedElement from './AnimatedElement';
 
 const useCases = [
   {
-    iconComponent: FileJson, 
+    iconComponent: FileJson,
     title: 'Smart Contract Creation',
     description: 'Effortlessly generate custom smart contracts for various blockchain platforms.',
     imageSrc: "https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/645c94ce88833c179c3c28ff_smart_contract_generator_feature_graphic.png",
@@ -67,7 +67,7 @@ export default function UseCasesSection() {
               <Card className="h-full shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card transform hover:-translate-y-1 overflow-hidden">
                 <div className="relative w-full h-48">
                   <Image
-                    src={useCase.imageSrc}
+                    src="https://placehold.co/400x240.png"
                     alt={useCase.title}
                     layout="fill"
                     objectFit="cover"
