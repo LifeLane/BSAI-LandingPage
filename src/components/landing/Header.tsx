@@ -6,11 +6,11 @@ import { Menu, X, Sparkles } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
+// Updated navigation items for QuantumTrader
 const navigationItems = [
-  { name: 'Solutions', href: '#solutions' },
-  { name: 'AI Tools', href: '#tools' },
-  { name: 'Use Cases', href: '#use-cases' },
-  { name: 'Company', href: '#company' },
+  { name: 'The Problem', href: '#problem-solution' },
+  { name: 'How It Works', href: '#how-it-works' },
+  { name: 'Benefits', href: '#benefits' },
 ];
 
 export default function Header() {
@@ -47,8 +47,17 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
-            <Button variant="default" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              Launch App
+            <Button 
+              variant="default" 
+              className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground"
+              onClick={() => {
+                const whitelistSection = document.getElementById('whitelist-gate');
+                if (whitelistSection) {
+                  whitelistSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
+              Get Whitelisted
             </Button>
           </nav>
 
@@ -75,8 +84,18 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
-            <Button variant="default" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-              Launch App
+            <Button 
+              variant="default" 
+              className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                const whitelistSection = document.getElementById('whitelist-gate');
+                if (whitelistSection) {
+                  whitelistSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
+              Get Whitelisted
             </Button>
           </nav>
         </div>

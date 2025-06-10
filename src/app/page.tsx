@@ -1,29 +1,23 @@
 import Header from '@/components/landing/Header';
 import Hero from '@/components/landing/Hero';
-import AboutSection from '@/components/landing/AboutSection';
-import SolutionsSection from '@/components/landing/SolutionsSection';
-import ToolsSection from '@/components/landing/ToolsSection';
-import UseCasesSection from '@/components/landing/UseCasesSection';
-import PartnersSection from '@/components/landing/PartnersSection';
-import CommunitySection from '@/components/landing/CommunitySection';
-import BlogSection from '@/components/landing/BlogSection';
-import CtaSection from '@/components/landing/CtaSection';
+import SocialProofBar from '@/components/landing/PartnersSection'; // Repurposed PartnersSection
+import ProblemSolutionSection from '@/components/landing/AboutSection'; // Repurposed AboutSection
+import HowItWorksSection from '@/components/landing/SolutionsSection'; // Repurposed SolutionsSection
+import BenefitsSection from '@/components/landing/ToolsSection'; // Repurposed ToolsSection
+import WhitelistGateSection from '@/components/landing/CtaSection'; // Repurposed CtaSection
 import Footer from '@/components/landing/Footer';
 
-export default function HomePage() {
+export default function QuantumTraderPage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-background">
       <Header />
       <main className="flex-grow">
         <Hero />
-        <AboutSection />
-        <SolutionsSection />
-        <ToolsSection />
-        <UseCasesSection />
-        <PartnersSection />
-        <CommunitySection />
-        <BlogSection />
-        <CtaSection />
+        <SocialProofBar />
+        <ProblemSolutionSection />
+        <HowItWorksSection />
+        <BenefitsSection />
+        <WhitelistGateSection />
       </main>
       <Footer />
     </div>

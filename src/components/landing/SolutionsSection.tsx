@@ -1,54 +1,56 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { User, Code, BriefcaseBusiness, Palette } from 'lucide-react';
+import { CircleDollarSign, KeyRound, Rocket } from 'lucide-react'; // Updated icons
 import AnimatedElement from './AnimatedElement';
 
-const solutions = [
+// Reimagined as "How It Works Section"
+const steps = [
   {
-    icon: User,
-    title: 'For Individuals',
-    description: 'Explore Web3 with ease. Generate NFTs, understand smart contracts, and get AI-powered insights for your crypto journey.',
+    icon: CircleDollarSign,
+    title: 'Become a BSAI Holder',
+    description: 'Acquire and hold BSAI tokens. Our upcoming launch on Raydium is your first chance to get in and be part of the QuantumTrader revolution.',
+    stepNumber: "01"
   },
   {
-    icon: Code,
-    title: 'For Developers',
-    description: 'Accelerate your development. Use AI to generate, debug, and audit smart contracts, saving time and resources.',
+    icon: KeyRound,
+    title: 'Unlock QuantumTrader',
+    description: 'No subscriptions, no fees. Your BSAI tokens are your lifetime key to unlocking the full power of QuantumTrader and its predictive analytics.',
+    stepNumber: "02"
   },
   {
-    icon: BriefcaseBusiness,
-    title: 'For Businesses',
-    description: 'Integrate blockchain solutions seamlessly. Leverage AI for market analysis, secure contract deployment, and innovative Web3 strategies.',
+    icon: Rocket,
+    title: 'Trade Smarter, Not Harder',
+    description: 'Use the quantum advantage to inform your strategy, spot opportunities early, and navigate the market with unparalleled confidence and insight.',
+    stepNumber: "03"
   },
-   {
-    icon: Palette,
-    title: 'For Creators',
-    description: 'Unleash your creativity with AI-powered NFT generation, content creation tools, and community building utilities in the Web3 space.',
-  }
 ];
 
-export default function SolutionsSection() {
+export default function HowItWorksSection() {
   return (
-    <section id="solutions" className="py-16 md:py-24 bg-muted">
+    <section id="how-it-works" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedElement className="text-center mb-12">
+        <AnimatedElement className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground">
-            BlockSmithAI Solutions for <span className="text-primary">Every Web3 User</span>
+            Gain Your <span className="text-primary">Unfair Advantage</span> in 3 Simple Steps
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-            Whether you're an individual, developer, or a business, BlockSmithAI provides tailored AI tools to navigate and build in the Web3 ecosystem.
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground font-body">
+            Accessing the future of trading intelligence is straightforward. Here’s how you get started:
           </p>
         </AnimatedElement>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {solutions.map((solution, index) => (
+        <div className="grid md:grid-cols-3 gap-8">
+          {steps.map((step, index) => (
             <AnimatedElement key={index} delay={`delay-${index * 100}`}>
-              <Card className="h-full shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card transform hover:-translate-y-1">
-                <CardHeader className="items-center text-center">
-                  <div className="p-4 bg-primary/10 rounded-full inline-block mb-4">
-                    <solution.icon className="h-10 w-10 text-primary" />
+              <Card className="h-full shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-card/30 backdrop-blur-sm border border-border/20 transform hover:-translate-y-2 relative overflow-hidden">
+                <CardHeader className="items-center text-center relative z-10">
+                  <div className="absolute -top-4 -left-4 text-7xl font-bold font-headline text-primary/10 opacity-80 z-0">
+                    {step.stepNumber}
                   </div>
-                  <CardTitle className="font-headline text-xl">{solution.title}</CardTitle>
+                  <div className="p-4 bg-primary/10 rounded-full inline-block mb-4 border border-primary/20">
+                    <step.icon className="h-10 w-10 text-primary" />
+                  </div>
+                  <CardTitle className="font-headline text-2xl">{step.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-muted-foreground text-sm">{solution.description}</p>
+                <CardContent className="text-center relative z-10">
+                  <p className="text-muted-foreground font-body text-base">{step.description}</p>
                 </CardContent>
               </Card>
             </AnimatedElement>

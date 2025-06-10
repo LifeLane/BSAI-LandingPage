@@ -1,50 +1,62 @@
 
 import Image from 'next/image';
 import AnimatedElement from './AnimatedElement';
+import { Card, CardContent } from '@/components/ui/card'; // Using Card for better styling
 
-export default function AboutSection() {
+// Reimagined as "The Problem/Solution Section"
+export default function ProblemSolutionSection() {
   return (
-    <section id="company" className="py-16 md:py-24 bg-background">
+    <section id="problem-solution" className="py-16 md:py-24 bg-muted/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedElement>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative aspect-square max-w-md mx-auto md:mx-0">
-              <Image
-                src="https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/645a319977d1919596bf2e19_what_is_chaingpt_graphic.png"
-                alt="What is ChainGPT illustration"
-                layout="fill"
-                objectFit="contain"
-                className="rounded-lg"
-                data-ai-hint="ai brain network"
-              />
-            </div>
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground mb-6">
-                What is <span className="text-primary">BlockSmithAI</span>?
-              </h2>
-              <p className="text-lg text-muted-foreground mb-4">
-                BlockSmithAI is a comprehensive suite of AI-powered tools designed to simplify and enhance interactions with blockchain and Web3 technologies. We leverage cutting-edge artificial intelligence to provide solutions for smart contract development, NFT generation, blockchain analytics, security auditing, and much more.
-              </p>
-              <p className="text-lg text-muted-foreground mb-4">
-                Our mission is to democratize access to complex blockchain functionalities, making them accessible to everyone from individual enthusiasts and artists to seasoned developers and large enterprises. BlockSmithAI acts as your intelligent partner in navigating the decentralized world.
-              </p>
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-center">
-                  <svg className="w-5 h-5 text-primary mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
-                  Innovative AI-driven solutions
-                </li>
-                <li className="flex items-center">
-                  <svg className="w-5 h-5 text-primary mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
-                  User-friendly interface
-                </li>
-                <li className="flex items-center">
-                  <svg className="w-5 h-5 text-primary mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
-                  Secure and reliable platform
-                </li>
-              </ul>
-            </div>
-          </div>
-        </AnimatedElement>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* The Problem */}
+          <AnimatedElement className="md:pr-6">
+            <Card className="bg-card/50 backdrop-blur-sm shadow-xl border-destructive/30">
+              <CardContent className="p-6 md:p-8">
+                <div className="relative aspect-[16/10] w-full mx-auto md:mx-0 rounded-lg overflow-hidden mb-6">
+                  <Image
+                    src="https://placehold.co/600x375.png"
+                    alt="Chaotic, messy, red candlestick charts"
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-lg"
+                    data-ai-hint="chaotic crypto chart"
+                  />
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground mb-6">
+                  Tired of Trading in the <span className="text-destructive">Dark</span>?
+                </h2>
+                <p className="text-lg text-muted-foreground font-body">
+                  The market is flooded with noise. Emotional decisions, lagging data, and whale manipulation make consistent profits nearly impossible. You're navigating a complex system with incomplete information, leaving you vulnerable and often frustrated.
+                </p>
+              </CardContent>
+            </Card>
+          </AnimatedElement>
+
+          {/* The Solution */}
+          <AnimatedElement className="md:pl-6" delay="delay-200">
+            <Card className="bg-card/50 backdrop-blur-sm shadow-xl border-primary/30">
+              <CardContent className="p-6 md:p-8">
+                 <div className="relative aspect-[16/10] w-full mx-auto md:mx-0 rounded-lg overflow-hidden mb-6">
+                  <Image
+                    src="https://placehold.co/600x375.png"
+                    alt="Clean, serene, futuristic interface of QuantumTrader"
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-lg"
+                    data-ai-hint="futuristic trading interface"
+                  />
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground mb-6">
+                  We Turned On the <span className="text-primary">Quantum Light</span>.
+                </h2>
+                <p className="text-lg text-muted-foreground font-body">
+                  QuantumTrader processes market data at a subatomic level, filtering out the noise to identify predictive patterns invisible to any other tool on Earth. Gain clarity and confidence, making informed decisions based on insights previously unimaginable.
+                </p>
+              </CardContent>
+            </Card>
+          </AnimatedElement>
+        </div>
       </div>
     </section>
   );
