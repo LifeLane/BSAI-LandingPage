@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from '@/components/ui/button';
@@ -7,9 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import AnimatedElement from './AnimatedElement';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import React from 'react';
-import Image from 'next/image'; // Added for background
 
-// Reimagined as "The Whitelist Gate (Final CTA)"
 export default function WhitelistGateSection() {
   const { toast } = useToast();
 
@@ -23,22 +22,23 @@ export default function WhitelistGateSection() {
     toast({
       title: "You're on the list!",
       description: "Thanks for joining the QuantumTrader whitelist. We'll be in touch soon with next steps.",
-      variant: "default", // Or use accent color if available
+      variant: "default",
     });
     (event.target as HTMLFormElement).reset();
   };
 
   return (
     <section id="whitelist-gate" className="relative py-16 md:py-24 bg-background overflow-hidden">
-       <div className="absolute inset-0 opacity-20">
-        <Image
-          src="https://placehold.co/1920x1080.png"
-          alt="Pulsating quantum sphere background"
-          layout="fill"
-          objectFit="cover"
-          data-ai-hint="quantum sphere dark animated"
-          className="filter brightness-50 animate-pulse-lilac" 
-        />
+       <div 
+        className="absolute inset-0 opacity-20 filter brightness-50"
+        data-ai-hint="active pulsating quantum sphere urgent"
+       >
+        {/* Placeholder for a JS-based animation */}
+        <div className="w-full h-full bg-transparent flex items-center justify-center">
+          <p className="text-muted-foreground p-8 text-center text-lg max-w-3xl">
+            [Animation: The generative sphere from Hero reappears, pulsating faster in Quantum Lilac, creating urgency. Tech: Three.js/WebGL]
+          </p>
+        </div>
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedElement className="max-w-2xl mx-auto">
@@ -59,7 +59,7 @@ export default function WhitelistGateSection() {
                     name="email"
                     id="email-cta"
                     required
-                    className="w-full bg-input border-border focus:ring-primary focus:border-primary peer py-3 pt-6 placeholder-transparent"
+                    className="w-full bg-input border-border focus:ring-primary focus:border-primary peer py-3 pt-6 placeholder-transparent text-base"
                     placeholder="you@example.com"
                   />
                   <Label 
@@ -77,7 +77,7 @@ export default function WhitelistGateSection() {
                     name="wallet"
                     id="wallet-cta"
                     required
-                    className="w-full bg-input border-border focus:ring-primary focus:border-primary peer py-3 pt-6 placeholder-transparent"
+                    className="w-full bg-input border-border focus:ring-primary focus:border-primary peer py-3 pt-6 placeholder-transparent text-base"
                     placeholder="Your Solana (SOL) wallet address"
                   />
                    <Label 
@@ -92,7 +92,7 @@ export default function WhitelistGateSection() {
                 <Button 
                   type="submit"
                   size="lg" 
-                  className="w-full text-lg font-headline py-3 bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground shadow-xl hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300 animate-pulse-lilac"
+                  className="w-full text-lg font-headline py-3 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-xl hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300 animate-pulse-lilac"
                   style={{ backgroundSize: '200% 200%' }}
                 >
                   I'M IN. SECURE MY SPOT.
