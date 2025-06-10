@@ -3,32 +3,31 @@
 
 import { Button } from '@/components/ui/button';
 import AnimatedElement from './AnimatedElement';
-import HeroParticleAnimation from './HeroParticleAnimation'; // Import the new component
+import HeroParticleAnimation from './HeroParticleAnimation';
 
 export default function Hero() {
   return (
     <section id="hero" className="relative bg-background pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden min-h-screen flex items-center justify-center">
-      {/* Background Visual - Particle Animation */}
       <div
-        className="absolute inset-0 z-0" // Ensure it's behind content
+        className="absolute inset-0 z-0 pointer-events-none opacity-30"
         data-ai-hint="live generative quantum sphere mouse-interactive"
       >
         <HeroParticleAnimation />
       </div>
 
-      {/* Decorative shapes adapted for new theme - keep these for layered effect */}
+      {/* Decorative shapes - keep for layered effect if desired, ensure z-index is appropriate */}
        <div className="absolute top-1/4 left-1/4 w-56 h-56 bg-primary/5 rounded-full filter blur-3xl animate-quantum-orb-primary opacity-30 z-0"></div>
        <div className="absolute bottom-1/4 right-1/4 w-56 h-56 bg-accent/5 rounded-full filter blur-3xl animate-quantum-orb-accent opacity-30 z-0"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"> {/* Content needs z-10 to be above background */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedElement className="text-center" animationClass="animate-fade-in-up">
-          <p className="text-md sm:text-lg font-body text-accent mb-4 tracking-wider uppercase">
+          <p className="text-md sm:text-lg font-body text-accent mb-4 tracking-wider uppercase hero-preheadline">
             For the 1% of Traders Ready for the 99% Advantage.
           </p>
         </AnimatedElement>
         <AnimatedElement className="text-center" delay="delay-100" animationClass="animate-fade-in-up">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-headline tracking-tight text-foreground">
-            QuantumTrader:
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-headline tracking-tight text-foreground hero-headline">
+            BlockSmithAI:
             <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
               Where Quantum Physics Meets Market Profits.
@@ -36,11 +35,11 @@ export default function Hero() {
           </h1>
         </AnimatedElement>
         <AnimatedElement className="text-center" delay="delay-200" animationClass="animate-fade-in-up">
-          <p className="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-muted-foreground font-body">
+          <p className="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-muted-foreground font-body hero-subheadline">
             BlockSmithAI is launching the world's first AI trade analyst powered by quantum computing. See the market moves before they happen.
           </p>
         </AnimatedElement>
-        <AnimatedElement className="mt-12 flex flex-col items-center" delay="delay-300" animationClass="animate-fade-in-up">
+        <AnimatedElement className="mt-12 flex flex-col items-center hero-cta" delay="delay-300" animationClass="animate-fade-in-up">
             <Button
               size="lg"
               className="px-10 py-6 text-lg font-headline bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-xl hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300 animate-pulse-lilac"

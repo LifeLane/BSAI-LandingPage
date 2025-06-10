@@ -1,15 +1,18 @@
 
 import AnimatedElement from './AnimatedElement';
 import { Card, CardContent } from '@/components/ui/card';
+import HeroParticleAnimation from './HeroParticleAnimation';
 
 export default function ProblemSolutionSection() {
   return (
-    <section id="problem-solution" className="py-16 md:py-24 bg-secondary">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="problem-solution" className="relative py-16 md:py-24 overflow-hidden">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
+        <HeroParticleAnimation />
+      </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* The Problem */}
           <AnimatedElement className="md:pr-6">
-            <Card className="bg-card shadow-xl border-destructive/50 transition-all duration-300 hover:shadow-destructive/30 transform hover:-translate-y-1">
+            <Card className="bg-card/70 backdrop-blur-sm shadow-xl border-destructive/50 transition-all duration-300 hover:shadow-destructive/30 transform hover:-translate-y-1">
               <CardContent className="p-6 md:p-8">
                 <div 
                   className="relative aspect-video w-full mx-auto md:mx-0 rounded-lg overflow-hidden mb-6 border border-dashed border-destructive/30 bg-card/50 flex items-center justify-center p-4"
@@ -21,7 +24,7 @@ export default function ProblemSolutionSection() {
                     <path d="M5 10 Q 30 45, 50 5 T 80 50 L 95 20" stroke="currentColor" strokeWidth="1.5" fill="none" pathLength="1" className="animate-draw-glitch-3" />
                   </svg>
                 </div>
-                <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground mb-6">
+                <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground mb-6 problem-title">
                   Tired of Trading in the <span className="text-destructive">Dark</span>?
                 </h2>
                 <p className="text-lg text-muted-foreground font-body">
@@ -31,9 +34,8 @@ export default function ProblemSolutionSection() {
             </Card>
           </AnimatedElement>
 
-          {/* The Solution */}
           <AnimatedElement className="md:pl-6" delay="delay-200">
-            <Card className="bg-card shadow-xl border-accent/50 transition-all duration-300 hover:shadow-accent/30 transform hover:-translate-y-1">
+            <Card className="bg-card/70 backdrop-blur-sm shadow-xl border-accent/50 transition-all duration-300 hover:shadow-accent/30 transform hover:-translate-y-1">
               <CardContent className="p-6 md:p-8">
                  <div 
                    className="relative aspect-video w-full mx-auto md:mx-0 rounded-lg overflow-hidden mb-6 border border-dashed border-accent/30 bg-card/50 flex items-center justify-center p-4"
@@ -43,11 +45,11 @@ export default function ProblemSolutionSection() {
                     <path d="M5 20 Q 25 5, 50 20 T 95 20" stroke="currentColor" strokeWidth="2" fill="none" className="animate-pulse-wave" />
                   </svg>
                 </div>
-                <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground mb-6">
+                <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground mb-6 solution-title">
                   We Turned On the <span className="text-primary">Quantum Light</span>.
                 </h2>
                 <p className="text-lg text-muted-foreground font-body">
-                  QuantumTrader processes market data at a subatomic level, filtering out the noise to identify predictive patterns invisible to any other tool on Earth. Gain clarity and confidence, making informed decisions based on insights previously unimaginable.
+                  BlockSmithAI processes market data at a subatomic level, filtering out the noise to identify predictive patterns invisible to any other tool on Earth. Gain clarity and confidence, making informed decisions based on insights previously unimaginable.
                 </p>
               </CardContent>
             </Card>

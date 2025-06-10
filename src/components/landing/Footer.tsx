@@ -1,6 +1,8 @@
+
 import Link from 'next/link';
 import { Sparkles } from 'lucide-react';
 import { FaTwitter, FaTelegramPlane, FaDiscord, FaGithub, FaMediumM } from 'react-icons/fa';
+import HeroParticleAnimation from './HeroParticleAnimation';
 
 const footerLinks = [
   {
@@ -42,8 +44,11 @@ const socialIcons = [
 
 export default function Footer() {
   return (
-    <footer className="bg-card border-t border-border/50 text-card-foreground">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+    <footer className="relative border-t border-border/50 text-card-foreground overflow-hidden">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
+        <HeroParticleAnimation />
+      </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div className="mb-6 md:mb-0">
             <Link href="/" className="flex items-center space-x-2 mb-4">

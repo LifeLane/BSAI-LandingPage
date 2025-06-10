@@ -6,11 +6,64 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from "@/hooks/use-toast";
 import AnimatedElement from './AnimatedElement';
+import HeroParticleAnimation from './HeroParticleAnimation';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { gsap } from 'gsap';
+
+const scrambleText = (element: HTMLElement, newText: string, duration: number = 0.5) => {
+  const originalText = element.textContent || "";
+  const chars = "!<>-_\\/[]{}—=+*^?#________";
+  let iteration = 0;
+
+  const interval = setInterval(() => {
+    element.textContent = newText
+      .split("")
+      .map((_letter, index) => {
+        if (index < iteration) {
+          return newText[index];
+        }
+        return chars[Math.floor(Math.random() * chars.length)];
+      })
+      .join("");
+
+    if (iteration >= newText.length) {
+      clearInterval(interval);
+      element.textContent = newText;
+    }
+    iteration += 1 / (duration * 10); // Adjust speed of scramble
+  }, 30); // Adjust interval for smoother/faster animation
+};
+
 
 export default function WhitelistGateSection() {
   const { toast } = useToast();
+  const [isHovering, setIsHovering] = useState(false);
+  const ctaButtonRef = React.useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!ctaButtonRef.current) return;
+    const button = ctaButtonRef.current;
+    const textElement = button.querySelector('.cta-text-scramble') as HTMLElement;
+
+    if (!textElement) return;
+
+    if (isHovering) {
+      scrambleText(textElement, "_SECURE YOUR SPOT_");
+      gsap.to(button, { 
+        duration: 0.3,
+        backgroundSize: "250% 250%",
+        ease: "power1.inOut"
+      });
+    } else {
+      textElement.textContent = "Get Whitelisted";
+      gsap.to(button, { 
+        duration: 0.3,
+        backgroundSize: "200% 200%", 
+        ease: "power1.inOut"
+      });
+    }
+  }, [isHovering]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,41 +74,19 @@ export default function WhitelistGateSection() {
 
     toast({
       title: "You're on the list!",
-      description: "Thanks for joining the QuantumTrader whitelist. We'll be in touch soon with next steps.",
+      description: "Thanks for joining the BlockSmithAI whitelist. We'll be in touch soon.",
       variant: "default",
     });
     (event.target as HTMLFormElement).reset();
   };
 
   return (
-    <section id="whitelist-gate" className="relative py-16 md:py-24 bg-background overflow-hidden">
+    <section id="whitelist-gate" className="relative py-16 md:py-24 overflow-hidden">
        <div 
-        className="absolute inset-0 opacity-40 filter brightness-60" // Adjusted opacity/brightness
+        className="absolute inset-0 z-0 pointer-events-none opacity-40"
         data-ai-hint="active pulsating quantum sphere urgent"
        >
-        <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
-          {/* Urgent Lilac Nodes */}
-          <circle cx="120" cy="90" r="3.5" fill="hsl(var(--primary))" className="animate-node-pulse-lilac-urgent opacity-80" />
-          <circle cx="170" cy="60" r="3" fill="hsl(var(--primary))" className="animate-node-pulse-lilac-urgent animation-delay-200 opacity-70" />
-          <circle cx="110" cy="140" r="2.5" fill="hsl(var(--primary))" className="animate-node-pulse-lilac-urgent animation-delay-400 opacity-60" />
-
-          {/* Urgent Mint Nodes */}
-          <circle cx="280" cy="110" r="3.5" fill="hsl(var(--accent))" className="animate-node-pulse-mint-urgent opacity-80" />
-          <circle cx="230" cy="140" r="3" fill="hsl(var(--accent))" className="animate-node-pulse-mint-urgent animation-delay-100 opacity-70" />
-          <circle cx="290" cy="60" r="2.5" fill="hsl(var(--accent))" className="animate-node-pulse-mint-urgent animation-delay-300 opacity-60" />
-          
-          {/* Urgent Connecting Threads - Lilac */}
-          <line x1="120" y1="90" x2="170" y2="60" stroke="hsl(var(--primary))" strokeWidth="0.7" className="animate-thread-draw-fast opacity-50" />
-          <line x1="120" y1="90" x2="110" y2="140" stroke="hsl(var(--primary))" strokeWidth="0.7" className="animate-thread-draw-fast animation-delay-300 opacity-40" />
-          
-          {/* Urgent Connecting Threads - Mint */}
-          <line x1="280" y1="110" x2="230" y2="140" stroke="hsl(var(--accent))" strokeWidth="0.7" className="animate-thread-draw-fast animation-delay-50 opacity-50" />
-          <line x1="280" y1="110" x2="290" y2="60" stroke="hsl(var(--accent))" strokeWidth="0.7" className="animate-thread-draw-fast animation-delay-250 opacity-40" />
-
-          {/* Urgent Cross Connections */}
-          <line x1="120" y1="90" x2="280" y2="110" stroke="hsl(var(--muted))" strokeWidth="0.4" className="animate-thread-draw-fast animation-delay-400 opacity-20" />
-           <line x1="170" y1="60" x2="230" y2="140" stroke="hsl(var(--muted))" strokeWidth="0.3" className="animate-thread-draw-fast animation-delay-500 opacity-15" />
-        </svg>
+        <HeroParticleAnimation />
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedElement className="max-w-2xl mx-auto">
@@ -65,7 +96,7 @@ export default function WhitelistGateSection() {
                 The Future is <span className="text-primary">Invite-Only.</span><br />Are You On the List?
               </CardTitle>
               <CardDescription className="mt-4 text-lg sm:text-xl text-muted-foreground font-body">
-                Whitelist spots for QuantumTrader are extremely limited. Secure your position now before the doors close and gain an unparalleled trading advantage.
+                Whitelist spots for BlockSmithAI are extremely limited. Secure your position now before the doors close and gain an unparalleled advantage.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -107,12 +138,15 @@ export default function WhitelistGateSection() {
                   </Label>
                 </div>
                 <Button 
+                  ref={ctaButtonRef}
                   type="submit"
                   size="lg" 
-                  className="w-full text-lg font-headline py-3 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-xl hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300 animate-pulse-lilac"
+                  className="w-full text-lg font-headline py-3 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-xl hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300 animate-pulse-lilac cta-button-animation"
                   style={{ backgroundSize: '200% 200%' }}
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
                 >
-                  I'M IN. SECURE MY SPOT.
+                  <span className="cta-text-scramble">Get Whitelisted</span>
                 </Button>
               </form>
               <p className="mt-6 text-center text-sm text-muted-foreground font-body">
@@ -125,4 +159,3 @@ export default function WhitelistGateSection() {
     </section>
   );
 }
-
