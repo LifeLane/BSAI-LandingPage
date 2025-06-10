@@ -13,11 +13,13 @@ export default function ProblemSolutionSection() {
               <CardContent className="p-6 md:p-8">
                 <div 
                   className="relative aspect-video w-full mx-auto md:mx-0 rounded-lg overflow-hidden mb-6 border border-dashed border-destructive/30 bg-card/50 flex items-center justify-center p-4"
-                  data-ai-hint="chaotic data visualization red glitching"
+                  data-ai-hint="animated chaotic red lines glitching"
                 >
-                  <p className="text-sm text-muted-foreground text-center">
-                    [Animation: Chaotic, messy, red candlestick charts and glitching data streams, representing market noise and trader frustration.]
-                  </p>
+                  <svg viewBox="0 0 100 60" className="w-full h-auto max-h-[200px] text-destructive">
+                    <path d="M5 55 Q 25 10, 45 40 T 85 15 L 95 30" stroke="currentColor" strokeWidth="1.5" fill="none" pathLength="1" className="animate-draw-glitch-1" />
+                    <path d="M5 30 Q 20 50, 40 20 T 75 55 L 95 40" stroke="currentColor" strokeWidth="1.5" fill="none" pathLength="1" className="animate-draw-glitch-2" />
+                    <path d="M5 10 Q 30 45, 50 5 T 80 50 L 95 20" stroke="currentColor" strokeWidth="1.5" fill="none" pathLength="1" className="animate-draw-glitch-3" />
+                  </svg>
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground mb-6">
                   Tired of Trading in the <span className="text-destructive">Dark</span>?
@@ -35,11 +37,11 @@ export default function ProblemSolutionSection() {
               <CardContent className="p-6 md:p-8">
                  <div 
                    className="relative aspect-video w-full mx-auto md:mx-0 rounded-lg overflow-hidden mb-6 border border-dashed border-accent/30 bg-card/50 flex items-center justify-center p-4"
-                   data-ai-hint="data weaving into clear wave mint green"
+                   data-ai-hint="animated pulsating mint green sine wave"
                  >
-                  <p className="text-sm text-muted-foreground text-center">
-                    [Animation: Chaotic red lines get "sucked in" and re-organize into a clean, singular, pulsating sine wave in Neon Mint green, representing QuantumTrader's clarity. Tech: GSAP/Framer Motion]
-                  </p>
+                  <svg viewBox="0 0 100 40" className="w-full h-auto max-h-[150px] text-accent">
+                    <path d="M5 20 Q 25 5, 50 20 T 95 20" stroke="currentColor" strokeWidth="2" fill="none" className="animate-pulse-wave" />
+                  </svg>
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground mb-6">
                   We Turned On the <span className="text-primary">Quantum Light</span>.

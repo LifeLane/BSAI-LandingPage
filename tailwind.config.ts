@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -10,44 +11,44 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        headline: ['var(--font-inter)', 'sans-serif'], // Using Inter for headlines
-        body: ['var(--font-inter)', 'sans-serif'],    // Using Inter for body
-        code: ['var(--font-roboto-mono)', 'monospace'], // Roboto Mono for code snippets
+        headline: ['var(--font-space-grotesk)', 'sans-serif'],
+        body: ['var(--font-space-mono)', 'monospace'],
+        code: ['var(--font-roboto-mono)', 'monospace'],
       },
       colors: {
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        background: 'hsl(var(--background))', // Deep Space Black #0A090F
+        foreground: 'hsl(var(--foreground))', // Stark White #E5E5E5
         card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+          DEFAULT: 'hsl(var(--card))', // Dark Void #100F1A
+          foreground: 'hsl(var(--card-foreground))', // Stark White
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+          DEFAULT: 'hsl(var(--popover))', // Dark Void
+          foreground: 'hsl(var(--popover-foreground))', // Stark White
         },
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+          DEFAULT: 'hsl(var(--primary))', // Quantum Lilac #6F42C1
+          foreground: 'hsl(var(--primary-foreground))', // Stark White for text on primary
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+          DEFAULT: 'hsl(var(--secondary))', // Dark Void (used for section backgrounds like AboutSection)
+          foreground: 'hsl(var(--secondary-foreground))', // Stark White
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
+          DEFAULT: 'hsl(var(--muted))', // Lunar Grey #4A4A5C
+          foreground: 'hsl(var(--muted-foreground))', // Lighter grey for muted text
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+          DEFAULT: 'hsl(var(--accent))', // Neon Mint #00E5A1
+          foreground: 'hsl(var(--accent-foreground))', // Deep Space Black for text on accent
         },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
+          DEFAULT: 'hsl(var(--destructive))', // A vibrant red
+          foreground: 'hsl(var(--destructive-foreground))', // Stark White
         },
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
+        border: 'hsl(var(--border))', // Lunar Grey
+        input: 'hsl(var(--input))', // Dark Void for input background
+        ring: 'hsl(var(--ring))', // Quantum Lilac for focus rings
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',
@@ -84,17 +85,33 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        'pulse-lilac': {
+        'pulse-lilac': { // For box-shadow pulse
           '0%, 100%': { boxShadow: '0 0 0 0px hsla(var(--primary), 0.7)' },
           '50%': { boxShadow: '0 0 0 10px hsla(var(--primary), 0)' },
         },
-        'pulse-mint': {
-          '0%, 100%': { boxShadow: '0 0 0 0px hsla(var(--accent), 0.7)' },
-          '50%': { boxShadow: '0 0 0 8px hsla(var(--accent), 0)' },
+        'pulse-mint': { // For box-shadow pulse on icons/elements
+          '0%, 100%': { transform: 'scale(1)', filter: 'drop-shadow(0 0 0px hsl(var(--accent)))' },
+          '50%': { transform: 'scale(1.1)', filter: 'drop-shadow(0 0 8px hsl(var(--accent)))' },
         },
         'gradient-shift': {
           '0%, 100%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
+        },
+        'draw-line': {
+          '0%': { strokeDasharray: '0, 1', strokeDashoffset: '0', opacity: '0.3' },
+          '40%': { strokeDasharray: '1, 0', strokeDashoffset: '0', opacity: '1' },
+          '80%, 100%': { strokeDasharray: '1, 0', strokeDashoffset: '-1', opacity: '0.3' },
+        },
+        'glitch-transform': {
+          '0%, 100%': { transform: 'translate(0, 0) skewX(0)' },
+          '20%': { transform: 'translate(1px, -0.5px) skewX(-1deg)' },
+          '40%': { transform: 'translate(-1px, 0.5px) skewX(0deg)' },
+          '60%': { transform: 'translate(0.5px, -1px) skewX(1deg)' },
+          '80%': { transform: 'translate(-0.5px, 1px) skewX(0deg)' },
+        },
+        'pulse-wave-opacity': {
+          '0%, 100%': { opacity: '0.6', strokeWidth: '1.5' },
+          '50%': { opacity: '1', strokeWidth: '2.5' },
         }
       },
       animation: {
@@ -102,8 +119,12 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
         'pulse-lilac': 'pulse-lilac 2s infinite',
-        'pulse-mint': 'pulse-mint 2s infinite',
+        'pulse-mint': 'pulse-mint 1.5s infinite ease-in-out',
         'gradient-shift': 'gradient-shift 3s ease infinite',
+        'draw-glitch-1': 'draw-line 3.5s ease-in-out infinite, glitch-transform 0.25s steps(2, jump-none) infinite alternate',
+        'draw-glitch-2': 'draw-line 3.5s 0.3s ease-in-out infinite, glitch-transform 0.25s 0.1s steps(2, jump-none) infinite alternate-reverse',
+        'draw-glitch-3': 'draw-line 3.5s 0.6s ease-in-out infinite, glitch-transform 0.25s 0.2s steps(2, jump-none) infinite alternate',
+        'pulse-wave': 'pulse-wave-opacity 2.5s infinite ease-in-out',
       },
     },
   },
