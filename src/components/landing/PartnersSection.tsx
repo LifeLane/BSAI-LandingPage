@@ -1,43 +1,59 @@
-import Image from 'next/image';
+
+"use client";
+
+import type React from 'react';
+import { useState, useEffect } from 'react';
+import { cn } from '@/lib/utils';
 import AnimatedElement from './AnimatedElement';
 
-// Updated to be "Social Proof Bar"
-const partnerLogos = [
-  { src: 'https://placehold.co/150x60.png', alt: 'CoinDesk Logo Placeholder', hint: "crypto media logo" },
-  { src: 'https://placehold.co/150x60.png', alt: 'Decrypt Logo Placeholder', hint: "blockchain news logo" },
-  { src: 'https://placehold.co/150x60.png', alt: 'TechCrunch Logo Placeholder', hint: "tech publication logo" },
-  { src: 'https://placehold.co/150x60.png', alt: 'Solana Logo Placeholder', hint: "solana blockchain logo" },
-  { src: 'https://placehold.co/150x60.png', alt: 'Raydium Logo Placeholder', hint: "raydium defi logo" },
-  { src: 'https://placehold.co/150x60.png', alt: 'Venture Capital Placeholder', hint: "venture capital firm logo" },
+const hooks = [
+  "THE FUTURE OF TRADING. REVEALED.",
+  "QUANTUM INSIGHTS. UNRIVALED EDGE.",
+  "MARKET MASTERY. AT SUBATOMIC SPEED.",
 ];
 
-export default function SocialProofBar() { // Renamed component
+const HOOK_DISPLAY_DURATION = 3500; // 3.5 seconds visible
+const FADE_TRANSITION_DURATION = 500; // 0.5 seconds for fade in/out
+
+export default function PartnersSection() { // Retaining original export name
+  const [currentHookIndex, setCurrentHookIndex] = useState(0);
+  const [textOpacity, setTextOpacity] = useState(1); // Start fully visible
+
+  useEffect(() => {
+    const cycleHook = () => {
+      setTextOpacity(0); // Start fade out
+
+      setTimeout(() => {
+        setCurrentHookIndex((prevIndex) => (prevIndex + 1) % hooks.length);
+        setTextOpacity(1); // Start fade in of new text
+      }, FADE_TRANSITION_DURATION);
+    };
+
+    // Set an interval to cycle through hooks
+    const intervalId = setInterval(cycleHook, HOOK_DISPLAY_DURATION + FADE_TRANSITION_DURATION);
+
+    // Clear interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
-    <section id="social-proof" className="py-12 md:py-16 bg-card border-y border-border/50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedElement className="text-center mb-8 md:mb-10">
-          <h2 className="text-sm font-semibold font-body tracking-wider text-muted-foreground uppercase">
-            As Featured In (or Soon to be)
+    <AnimatedElement animationClass="animate-fade-in-up"> {/* For overall section appearance */}
+      <section id="animated-hooks-bar" className="py-12 md:py-16 bg-card border-y border-border/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-center overflow-hidden"> {/* Increased height for better text presentation */}
+          <h2
+            className={cn(
+              "text-2xl sm:text-3xl md:text-4xl font-bold font-headline text-center text-primary tracking-tight",
+              "transition-opacity ease-in-out",
+            )}
+            style={{
+              opacity: textOpacity,
+              transitionDuration: `${FADE_TRANSITION_DURATION}ms`,
+            }}
+          >
+            {hooks[currentHookIndex]}
           </h2>
-        </AnimatedElement>
-        <AnimatedElement delay="delay-200">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 items-center">
-            {partnerLogos.map((logo, index) => (
-              <div key={index} className="flex justify-center opacity-70 hover:opacity-100 transition-opacity duration-300 transform hover:scale-110">
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={150}
-                  height={50} 
-                  objectFit="contain"
-                  data-ai-hint={logo.hint}
-                  className="grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-            ))}
-          </div>
-        </AnimatedElement>
-      </div>
-    </section>
+        </div>
+      </section>
+    </AnimatedElement>
   );
 }
