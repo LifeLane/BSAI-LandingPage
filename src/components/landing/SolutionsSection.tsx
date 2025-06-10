@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Coins, KeyRound, Rocket } from 'lucide-react'; // Changed CircleDollarSign to Coins
 import AnimatedElement from './AnimatedElement';
@@ -41,7 +42,7 @@ export default function HowItWorksSection() {
             <AnimatedElement key={index} delay={`delay-${index * 100}`}>
               <Card className="h-full shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-background border border-border hover:border-primary/70 transform hover:-translate-y-2 relative overflow-hidden group">
                 <CardHeader className="items-center text-center relative z-10">
-                  <div className="absolute -top-4 -left-4 text-7xl font-bold font-headline text-primary/10 opacity-70 z-0 group-hover:text-primary/20 transition-colors">
+                  <div className="absolute -top-4 -left-4 text-7xl font-bold font-headline text-primary/10 opacity-70 z-0 group-hover:text-primary/20 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
                     {step.stepNumber}
                   </div>
                   <div className="p-4 bg-primary/10 rounded-full inline-block mb-4 border border-primary/20 group-hover:bg-accent/10 group-hover:border-accent/30 transition-colors duration-300">
@@ -60,3 +61,4 @@ export default function HowItWorksSection() {
     </section>
   );
 }
+

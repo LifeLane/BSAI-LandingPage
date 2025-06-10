@@ -8,11 +8,11 @@ export default function Hero() {
   return (
     <section id="hero" className="relative bg-background pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden min-h-screen flex items-center justify-center">
       {/* Background Visual - Placeholder for Generative Animation */}
-      <div 
-        className="absolute inset-0 opacity-50" 
+      <div
+        className="absolute inset-0 opacity-20 filter brightness-50"
         data-ai-hint="generative quantum sphere mouse-interactive"
       >
-        <div className="w-full h-full bg-transparent flex items-center justify-center filter brightness-75">
+        <div className="w-full h-full bg-transparent flex items-center justify-center">
           <p className="text-muted-foreground p-8 text-center text-lg max-w-3xl">
             [Live Generative Background Animation: Slowly rotating, complex sphere of interconnected nodes and glowing threads of light (Quantum Lilac and Neon Mint). Subtly shifts perspective with mouse movement. Tech: Three.js/WebGL]
           </p>
@@ -20,8 +20,8 @@ export default function Hero() {
       </div>
 
       {/* Decorative shapes adapted for new theme */}
-       <div className="absolute top-1/4 left-1/4 w-56 h-56 bg-primary/5 rounded-full filter blur-3xl animate-pulse opacity-50"></div>
-       <div className="absolute bottom-1/4 right-1/4 w-56 h-56 bg-accent/5 rounded-full filter blur-3xl animate-pulse-mint animation-delay-2000 opacity-50"></div>
+       <div className="absolute top-1/4 left-1/4 w-56 h-56 bg-primary/5 rounded-full filter blur-3xl animate-quantum-orb-primary opacity-30"></div>
+       <div className="absolute bottom-1/4 right-1/4 w-56 h-56 bg-accent/5 rounded-full filter blur-3xl animate-quantum-orb-accent opacity-30"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedElement className="text-center" animationClass="animate-fade-in-up">
@@ -65,3 +65,4 @@ export default function Hero() {
     </section>
   );
 }
+

@@ -112,7 +112,15 @@ export default {
         'pulse-wave-opacity': {
           '0%, 100%': { opacity: '0.6', strokeWidth: '1.5' },
           '50%': { opacity: '1', strokeWidth: '2.5' },
-        }
+        },
+        'quantum-orb-primary': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0.3' },
+          '50%': { transform: 'scale(1.05)', opacity: '0.5' },
+        },
+        'quantum-orb-accent': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0.3' },
+          '50%': { transform: 'scale(1.03)', opacity: '0.45' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -125,8 +133,11 @@ export default {
         'draw-glitch-2': 'draw-line 3.5s 0.3s ease-in-out infinite, glitch-transform 0.25s 0.1s steps(2, jump-none) infinite alternate-reverse',
         'draw-glitch-3': 'draw-line 3.5s 0.6s ease-in-out infinite, glitch-transform 0.25s 0.2s steps(2, jump-none) infinite alternate',
         'pulse-wave': 'pulse-wave-opacity 2.5s infinite ease-in-out',
+        'quantum-orb-primary': 'quantum-orb-primary 3s infinite ease-in-out',
+        'quantum-orb-accent': 'quantum-orb-accent 3.5s 0.5s infinite ease-in-out',
       },
     },
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
+
