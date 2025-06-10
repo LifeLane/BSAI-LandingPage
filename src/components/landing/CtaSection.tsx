@@ -8,15 +8,17 @@ import { useToast } from "@/hooks/use-toast";
 import AnimatedElement from './AnimatedElement';
 import HeroParticleAnimation from './HeroParticleAnimation';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 const scrambleText = (element: HTMLElement, newText: string, duration: number = 0.5) => {
+  if (!element) return;
   const originalText = element.textContent || "";
   const chars = "!<>-_\\/[]{}—=+*^?#________";
   let iteration = 0;
+  let intervalId: NodeJS.Timeout | null = null;
 
-  const interval = setInterval(() => {
+  const animateScramble = () => {
     element.textContent = newText
       .split("")
       .map((_letter, index) => {
@@ -28,42 +30,64 @@ const scrambleText = (element: HTMLElement, newText: string, duration: number = 
       .join("");
 
     if (iteration >= newText.length) {
-      clearInterval(interval);
-      element.textContent = newText;
+      if (intervalId) clearInterval(intervalId);
+      element.textContent = newText; // Ensure final text is set
+      return;
     }
-    iteration += 1 / (duration * 10); // Adjust speed of scramble
-  }, 30); // Adjust interval for smoother/faster animation
+    iteration += 1 / (duration * 10); 
+  };
+
+  // Clear any existing interval for this element to prevent overlaps
+  // This might require a more robust way to manage intervals if called rapidly
+  // For now, we assume it's tied to hover state which naturally manages this.
+  if (element.dataset.scrambleIntervalId) {
+    clearInterval(parseInt(element.dataset.scrambleIntervalId));
+  }
+
+  intervalId = setInterval(animateScramble, 30);
+  element.dataset.scrambleIntervalId = String(intervalId);
 };
 
 
 export default function WhitelistGateSection() {
   const { toast } = useToast();
-  const [isHovering, setIsHovering] = useState(false);
-  const ctaButtonRef = React.useRef<HTMLButtonElement>(null);
+  const [isHoveringButton, setIsHoveringButton] = useState(false);
+  const ctaButtonRef = useRef<HTMLButtonElement>(null);
+  const ctaTextRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (!ctaButtonRef.current) return;
     const button = ctaButtonRef.current;
-    const textElement = button.querySelector('.cta-text-scramble') as HTMLElement;
+    const textElement = ctaTextRef.current;
 
-    if (!textElement) return;
+    if (!button || !textElement) return;
 
-    if (isHovering) {
+    if (isHoveringButton) {
       scrambleText(textElement, "_SECURE YOUR SPOT_");
-      gsap.to(button, { 
+      gsap.to(button, {
         duration: 0.3,
-        backgroundSize: "250% 250%",
+        backgroundPosition: "0% 50%", // Shift gradient
         ease: "power1.inOut"
       });
     } else {
+      // Ensure the scramble is stopped and text is reset if hover ends mid-scramble
+      if (textElement.dataset.scrambleIntervalId) {
+        clearInterval(parseInt(textElement.dataset.scrambleIntervalId));
+        delete textElement.dataset.scrambleIntervalId;
+      }
       textElement.textContent = "Get Whitelisted";
-      gsap.to(button, { 
+      gsap.to(button, {
         duration: 0.3,
-        backgroundSize: "200% 200%", 
+        backgroundPosition: "100% 50%", // Original gradient position
         ease: "power1.inOut"
       });
     }
-  }, [isHovering]);
+    // Cleanup interval on unmount or if isHoveringButton changes before interval completes
+    return () => {
+      if (textElement && textElement.dataset.scrambleIntervalId) {
+        clearInterval(parseInt(textElement.dataset.scrambleIntervalId));
+      }
+    };
+  }, [isHoveringButton]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -82,8 +106,8 @@ export default function WhitelistGateSection() {
 
   return (
     <section id="whitelist-gate" className="relative py-16 md:py-24 overflow-hidden">
-       <div 
-        className="absolute inset-0 z-0 pointer-events-none opacity-40"
+       <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-30"
         data-ai-hint="active pulsating quantum sphere urgent"
        >
         <HeroParticleAnimation />
@@ -107,13 +131,13 @@ export default function WhitelistGateSection() {
                     name="email"
                     id="email-cta"
                     required
-                    className="w-full bg-input border-border focus:ring-primary focus:border-primary peer py-3 pt-6 placeholder-transparent text-base"
+                    className="w-full bg-input border-border focus:ring-primary focus:border-primary peer py-3 pt-6 placeholder:text-transparent text-base"
                     placeholder="you@example.com"
                   />
-                  <Label 
-                    htmlFor="email-cta" 
-                    className="absolute left-3 top-1 text-xs text-muted-foreground transition-all 
-                               peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base 
+                  <Label
+                    htmlFor="email-cta"
+                    className="absolute left-3 top-1 text-xs text-muted-foreground transition-all
+                               peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base
                                peer-focus:top-1 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-primary"
                   >
                     Enter Your Email
@@ -125,11 +149,11 @@ export default function WhitelistGateSection() {
                     name="wallet"
                     id="wallet-cta"
                     required
-                    className="w-full bg-input border-border focus:ring-primary focus:border-primary peer py-3 pt-6 placeholder-transparent text-base"
+                    className="w-full bg-input border-border focus:ring-primary focus:border-primary peer py-3 pt-6 placeholder:text-transparent text-base"
                     placeholder="Your Solana (SOL) wallet address"
                   />
-                   <Label 
-                    htmlFor="wallet-cta" 
+                   <Label
+                    htmlFor="wallet-cta"
                     className="absolute left-3 top-1 text-xs text-muted-foreground transition-all
                                peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base
                                peer-focus:top-1 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-primary"
@@ -137,16 +161,16 @@ export default function WhitelistGateSection() {
                     Enter Your Solana Wallet Address
                   </Label>
                 </div>
-                <Button 
+                <Button
                   ref={ctaButtonRef}
                   type="submit"
-                  size="lg" 
-                  className="w-full text-lg font-headline py-3 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-xl hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300 animate-pulse-lilac cta-button-animation"
-                  style={{ backgroundSize: '200% 200%' }}
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
+                  size="lg"
+                  className="w-full text-lg font-headline py-3 bg-gradient-to-r from-primary via-accent to-primary text-primary-foreground shadow-xl hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300 cta-button-animation"
+                  style={{ backgroundSize: '200% 200%', backgroundPosition: '100% 50%' }}
+                  onMouseEnter={() => setIsHoveringButton(true)}
+                  onMouseLeave={() => setIsHoveringButton(false)}
                 >
-                  <span className="cta-text-scramble">Get Whitelisted</span>
+                  <span ref={ctaTextRef} className="cta-text-scramble">Get Whitelisted</span>
                 </Button>
               </form>
               <p className="mt-6 text-center text-sm text-muted-foreground font-body">
@@ -159,3 +183,4 @@ export default function WhitelistGateSection() {
     </section>
   );
 }
+
