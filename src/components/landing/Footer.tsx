@@ -77,10 +77,15 @@ export default function Footer() {
           </p>
           <div className="flex space-x-4">
             {socialIcons.map((social) => (
-              <Link key={social.name} href={social.href} passHref>
-                <a target="_blank" rel="noopener noreferrer" aria-label={social.name} className="text-muted-foreground hover:text-primary transition-colors">
-                  <social.icon className="h-5 w-5" />
-                </a>
+              <Link
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <social.icon className="h-5 w-5" />
               </Link>
             ))}
           </div>
