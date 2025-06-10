@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import AnimatedElement from './AnimatedElement';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import React from 'react';
+import Image from 'next/image'; // Added for background
 
 // Reimagined as "The Whitelist Gate (Final CTA)"
 export default function WhitelistGateSection() {
@@ -14,25 +15,34 @@ export default function WhitelistGateSection() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Basic form handling logic, can be expanded
     const formData = new FormData(event.currentTarget);
     const email = formData.get('email');
     const wallet = formData.get('wallet');
     console.log({ email, wallet });
 
-    // Add to a waitlist or send to backend
     toast({
       title: "You're on the list!",
-      description: "Thanks for joining the QuantumTrader whitelist. We'll be in touch soon.",
+      description: "Thanks for joining the QuantumTrader whitelist. We'll be in touch soon with next steps.",
+      variant: "default", // Or use accent color if available
     });
-    (event.target as HTMLFormElement).reset(); // Reset form
+    (event.target as HTMLFormElement).reset();
   };
 
   return (
-    <section id="whitelist-gate" className="py-16 md:py-24 bg-gradient-to-br from-background via-background to-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="whitelist-gate" className="relative py-16 md:py-24 bg-background overflow-hidden">
+       <div className="absolute inset-0 opacity-20">
+        <Image
+          src="https://placehold.co/1920x1080.png"
+          alt="Pulsating quantum sphere background"
+          layout="fill"
+          objectFit="cover"
+          data-ai-hint="quantum sphere dark animated"
+          className="filter brightness-50 animate-pulse-lilac" 
+        />
+      </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedElement className="max-w-2xl mx-auto">
-          <Card className="bg-card/50 backdrop-blur-md shadow-2xl border-primary/30">
+          <Card className="bg-card/80 backdrop-blur-md shadow-2xl border-primary/50">
             <CardHeader className="text-center">
               <CardTitle className="text-3xl sm:text-4xl md:text-5xl font-bold font-headline text-foreground">
                 The Future is <span className="text-primary">Invite-Only.</span><br />Are You On the List?
@@ -43,36 +53,47 @@ export default function WhitelistGateSection() {
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6 mt-6">
-                <div>
-                  <Label htmlFor="email" className="block text-sm font-medium text-foreground font-body mb-1">
-                    Enter Your Email
-                  </Label>
+                <div className="relative group">
                   <Input
                     type="email"
                     name="email"
-                    id="email"
+                    id="email-cta"
                     required
-                    className="w-full bg-background/70 border-border focus:ring-primary focus:border-primary"
+                    className="w-full bg-input border-border focus:ring-primary focus:border-primary peer py-3 pt-6 placeholder-transparent"
                     placeholder="you@example.com"
                   />
-                </div>
-                <div>
-                  <Label htmlFor="wallet" className="block text-sm font-medium text-foreground font-body mb-1">
-                    Enter Your Solana Wallet Address
+                  <Label 
+                    htmlFor="email-cta" 
+                    className="absolute left-3 top-1 text-xs text-muted-foreground transition-all 
+                               peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base 
+                               peer-focus:top-1 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-primary"
+                  >
+                    Enter Your Email
                   </Label>
+                </div>
+                <div className="relative group">
                   <Input
                     type="text"
                     name="wallet"
-                    id="wallet"
+                    id="wallet-cta"
                     required
-                    className="w-full bg-background/70 border-border focus:ring-primary focus:border-primary"
+                    className="w-full bg-input border-border focus:ring-primary focus:border-primary peer py-3 pt-6 placeholder-transparent"
                     placeholder="Your Solana (SOL) wallet address"
                   />
+                   <Label 
+                    htmlFor="wallet-cta" 
+                    className="absolute left-3 top-1 text-xs text-muted-foreground transition-all
+                               peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base
+                               peer-focus:top-1 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-primary"
+                  >
+                    Enter Your Solana Wallet Address
+                  </Label>
                 </div>
                 <Button 
                   type="submit"
                   size="lg" 
-                  className="w-full text-lg font-headline py-3 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-xl transform hover:scale-105 transition-transform duration-300"
+                  className="w-full text-lg font-headline py-3 bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground shadow-xl hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300 animate-pulse-lilac"
+                  style={{ backgroundSize: '200% 200%' }}
                 >
                   I'M IN. SECURE MY SPOT.
                 </Button>

@@ -1,19 +1,24 @@
 import type { Metadata } from 'next';
+import { Inter, Roboto_Mono } from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
+// Define font variables
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  weight: ['400', '700'], // Regular and Bold for body and headlines
+});
+
+const robotoMono = Roboto_Mono({
+  subsets: ['latin'],
+  variable: '--font-roboto-mono',
+  weight: ['400'], // Regular for code snippets
+});
+
 export const metadata: Metadata = {
-  title: 'QuantumTrader: AI Trading Analyst',
-  description: "The world's first AI trade analyst powered by quantum computing. See market moves before they happen.",
-};
-
-// Define font variables for Space Grotesk (headlines) and Space Mono (body)
-const spaceGrotesk = {
-  variable: '--font-space-grotesk',
-};
-
-const spaceMono = {
-  variable: '--font-space-mono',
+  title: 'BlockSmithAI: QuantumTrader',
+  description: "BlockSmithAI presents QuantumTrader: The AI-Powered toolkit for the Blockchain & Web3 space, revolutionizing trading.",
 };
 
 export default function RootLayout({
@@ -22,13 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${spaceMono.variable}`}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-      </head>
+    <html lang="en" className={`${inter.variable} ${robotoMono.variable}`}>
       <body className="font-body antialiased bg-background text-foreground">
         {children}
         <Toaster />

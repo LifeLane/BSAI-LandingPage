@@ -1,16 +1,16 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Coins, BarChartHorizontalBig, Users, Zap } from 'lucide-react'; // Updated icons for benefits
+import { Award, Package, Users } from 'lucide-react'; // Updated icons: Coins -> Award, BarChartHorizontalBig -> Package (for tools/ecosystem)
 import AnimatedElement from './AnimatedElement';
 
 // Reimagined as "The Benefits Section"
 const benefits = [
   {
-    icon: Coins,
+    icon: Award, // Changed from Coins
     title: 'Attractive Staking Rewards',
     description: 'Earn passive income just for securing the network and holding BSAI tokens. Let your assets work for you while you benefit from QuantumTrader.',
   },
   {
-    icon: BarChartHorizontalBig, // Using BarChartHorizontalBig as a proxy for "future tools/ecosystem"
+    icon: Package, // Changed from BarChartHorizontalBig
     title: 'Priority Access to Future Tools',
     description: "You're not just getting a tool; you're investing in an ecosystem. Be first in line for our Self-Custody Wallet, Swap Protocol, and AI Token Factory.",
   },
@@ -23,7 +23,7 @@ const benefits = [
 
 export default function BenefitsSection() {
   return (
-    <section id="benefits" className="py-16 md:py-24 bg-muted/20">
+    <section id="benefits" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedElement className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground">
@@ -36,13 +36,13 @@ export default function BenefitsSection() {
         <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <AnimatedElement key={index} delay={`delay-${index * 100}`}>
-              <Card className="h-full shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-card/30 backdrop-blur-sm border border-border/20 transform hover:-translate-y-2 group overflow-hidden">
+              <Card className="h-full shadow-xl hover:shadow-2xl transition-all duration-300 bg-card border border-border hover:border-primary/70 transform hover:-translate-y-2 group overflow-hidden hover:scale-105">
                 <CardHeader>
                   <div className="flex items-center space-x-4">
-                    <div className="p-3 bg-primary/10 rounded-lg border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                    <div className="p-3 bg-primary/10 rounded-lg border border-primary/20 group-hover:bg-primary/20 group-hover:border-primary transition-colors">
                       <benefit.icon className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
                     </div>
-                    <CardTitle className="font-headline text-xl">{benefit.title}</CardTitle>
+                    <CardTitle className="font-headline text-xl text-foreground group-hover:text-accent transition-colors">{benefit.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>

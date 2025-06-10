@@ -10,9 +10,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['var(--font-space-mono)', 'monospace', 'sans-serif'],
-        headline: ['var(--font-space-grotesk)', 'sans-serif'],
-        code: ['monospace'],
+        headline: ['var(--font-inter)', 'sans-serif'], // Using Inter for headlines
+        body: ['var(--font-inter)', 'sans-serif'],    // Using Inter for body
+        code: ['var(--font-roboto-mono)', 'monospace'], // Roboto Mono for code snippets
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -73,36 +73,37 @@ export default {
       },
       keyframes: {
         'accordion-down': {
-          from: {
-            height: '0',
-          },
-          to: {
-            height: 'var(--radix-accordion-content-height)',
-          },
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
         },
         'accordion-up': {
-          from: {
-            height: 'var(--radix-accordion-content-height)',
-          },
-          to: {
-            height: '0',
-          },
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
         },
         'fade-in-up': {
-          '0%': {
-            opacity: '0',
-            transform: 'translateY(20px)'
-          },
-          '100%': {
-            opacity: '1',
-            transform: 'translateY(0)'
-          },
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        'pulse-lilac': {
+          '0%, 100%': { boxShadow: '0 0 0 0px hsla(var(--primary), 0.7)' },
+          '50%': { boxShadow: '0 0 0 10px hsla(var(--primary), 0)' },
+        },
+        'pulse-mint': {
+          '0%, 100%': { boxShadow: '0 0 0 0px hsla(var(--accent), 0.7)' },
+          '50%': { boxShadow: '0 0 0 8px hsla(var(--accent), 0)' },
+        },
+        'gradient-shift': {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
+        'pulse-lilac': 'pulse-lilac 2s infinite',
+        'pulse-mint': 'pulse-mint 2s infinite',
+        'gradient-shift': 'gradient-shift 3s ease infinite',
       },
     },
   },

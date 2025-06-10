@@ -1,11 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CircleDollarSign, KeyRound, Rocket } from 'lucide-react'; // Updated icons
+import { Coins, KeyRound, Rocket } from 'lucide-react'; // Changed CircleDollarSign to Coins
 import AnimatedElement from './AnimatedElement';
 
 // Reimagined as "How It Works Section"
 const steps = [
   {
-    icon: CircleDollarSign,
+    icon: Coins, // Changed from CircleDollarSign
     title: 'Become a BSAI Holder',
     description: 'Acquire and hold BSAI tokens. Our upcoming launch on Raydium is your first chance to get in and be part of the QuantumTrader revolution.',
     stepNumber: "01"
@@ -26,7 +26,7 @@ const steps = [
 
 export default function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="py-16 md:py-24 bg-background">
+    <section id="how-it-works" className="py-16 md:py-24 bg-card">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedElement className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground">
@@ -39,15 +39,15 @@ export default function HowItWorksSection() {
         <div className="grid md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
             <AnimatedElement key={index} delay={`delay-${index * 100}`}>
-              <Card className="h-full shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-card/30 backdrop-blur-sm border border-border/20 transform hover:-translate-y-2 relative overflow-hidden">
+              <Card className="h-full shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-background border border-border hover:border-primary/70 transform hover:-translate-y-2 relative overflow-hidden group">
                 <CardHeader className="items-center text-center relative z-10">
-                  <div className="absolute -top-4 -left-4 text-7xl font-bold font-headline text-primary/10 opacity-80 z-0">
+                  <div className="absolute -top-4 -left-4 text-7xl font-bold font-headline text-primary/10 opacity-70 z-0 group-hover:text-primary/20 transition-colors">
                     {step.stepNumber}
                   </div>
-                  <div className="p-4 bg-primary/10 rounded-full inline-block mb-4 border border-primary/20">
-                    <step.icon className="h-10 w-10 text-primary" />
+                  <div className="p-4 bg-primary/10 rounded-full inline-block mb-4 border border-primary/20 group-hover:bg-accent/10 group-hover:border-accent/30 transition-colors duration-300">
+                    <step.icon className="h-10 w-10 text-primary group-hover:text-accent group-hover:animate-pulse-mint transition-colors duration-300" />
                   </div>
-                  <CardTitle className="font-headline text-2xl">{step.title}</CardTitle>
+                  <CardTitle className="font-headline text-2xl text-foreground group-hover:text-primary transition-colors">{step.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="text-center relative z-10">
                   <p className="text-muted-foreground font-body text-base">{step.description}</p>
