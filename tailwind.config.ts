@@ -98,9 +98,9 @@ export default {
           '50%': { backgroundPosition: '100% 50%' },
         },
         'draw-line': {
-          '0%': { strokeDasharray: '0, 1', strokeDashoffset: '0', opacity: '0.3' },
-          '40%': { strokeDasharray: '1, 0', strokeDashoffset: '0', opacity: '1' },
-          '80%, 100%': { strokeDasharray: '1, 0', strokeDashoffset: '-1', opacity: '0.3' },
+          '0%': { strokeDasharray: '0, 1000', strokeDashoffset: '0', opacity: '0.3' }, /* start invisible */
+          '40%': { strokeDasharray: '1000, 0', strokeDashoffset: '0', opacity: '1' }, /* draw in */
+          '80%, 100%': { strokeDasharray: '1000, 0', strokeDashoffset: '-1000', opacity: '0.3' }, /* fade out by drawing out */
         },
         'glitch-transform': {
           '0%, 100%': { transform: 'translate(0, 0) skewX(0)' },
@@ -121,6 +121,32 @@ export default {
           '0%, 100%': { transform: 'scale(1)', opacity: '0.3' },
           '50%': { transform: 'scale(1.03)', opacity: '0.45' },
         },
+        'node-pulse-lilac': {
+          '0%, 100%': { transform: 'scale(0.95)', opacity: '0.7' },
+          '50%': { transform: 'scale(1.05)', opacity: '1' },
+        },
+        'node-pulse-mint': {
+          '0%, 100%': { transform: 'scale(0.95)', opacity: '0.7' },
+          '50%': { transform: 'scale(1.05)', opacity: '1' },
+        },
+        'thread-draw': {
+          '0%': { strokeDasharray: '0, 200', opacity: '0' }, // Max length of a line
+          '50%': { strokeDasharray: '200, 200', opacity: '0.5' },
+          '100%': { strokeDasharray: '200, 200', opacity: '0.2' }, // Keep it faintly visible
+        },
+        'node-pulse-lilac-urgent': {
+          '0%, 100%': { transform: 'scale(0.9)', opacity: '0.6' },
+          '50%': { transform: 'scale(1.1)', opacity: '1' },
+        },
+        'node-pulse-mint-urgent': {
+          '0%, 100%': { transform: 'scale(0.9)', opacity: '0.6' },
+          '50%': { transform: 'scale(1.1)', opacity: '1' },
+        },
+        'thread-draw-fast': {
+          '0%': { strokeDasharray: '0, 200', opacity: '0' },
+          '50%': { strokeDasharray: '200, 200', opacity: '0.6' },
+          '100%': { strokeDasharray: '200, 200', opacity: '0.3' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -135,8 +161,15 @@ export default {
         'pulse-wave': 'pulse-wave-opacity 2.5s infinite ease-in-out',
         'quantum-orb-primary': 'quantum-orb-primary 3s infinite ease-in-out',
         'quantum-orb-accent': 'quantum-orb-accent 3.5s 0.5s infinite ease-in-out',
+        'node-pulse-lilac': 'node-pulse-lilac 2.5s infinite ease-in-out',
+        'node-pulse-mint': 'node-pulse-mint 2.5s infinite ease-in-out',
+        'thread-draw': 'thread-draw 4s ease-out infinite alternate',
+        'node-pulse-lilac-urgent': 'node-pulse-lilac-urgent 1.5s infinite ease-in-out',
+        'node-pulse-mint-urgent': 'node-pulse-mint-urgent 1.5s infinite ease-in-out',
+        'thread-draw-fast': 'thread-draw-fast 2.5s ease-out infinite alternate',
       },
     },
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
+

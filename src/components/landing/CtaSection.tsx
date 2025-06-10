@@ -30,15 +30,32 @@ export default function WhitelistGateSection() {
   return (
     <section id="whitelist-gate" className="relative py-16 md:py-24 bg-background overflow-hidden">
        <div 
-        className="absolute inset-0 opacity-20 filter brightness-50"
+        className="absolute inset-0 opacity-40 filter brightness-60" // Adjusted opacity/brightness
         data-ai-hint="active pulsating quantum sphere urgent"
        >
-        {/* Placeholder for a JS-based animation */}
-        <div className="w-full h-full bg-transparent flex items-center justify-center">
-          <p className="text-muted-foreground p-8 text-center text-lg max-w-3xl">
-            [Animation: The generative sphere from Hero reappears, pulsating faster in Quantum Lilac, creating urgency. Tech: Three.js/WebGL]
-          </p>
-        </div>
+        <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
+          {/* Urgent Lilac Nodes */}
+          <circle cx="120" cy="90" r="3.5" fill="hsl(var(--primary))" className="animate-node-pulse-lilac-urgent opacity-80" />
+          <circle cx="170" cy="60" r="3" fill="hsl(var(--primary))" className="animate-node-pulse-lilac-urgent animation-delay-200 opacity-70" />
+          <circle cx="110" cy="140" r="2.5" fill="hsl(var(--primary))" className="animate-node-pulse-lilac-urgent animation-delay-400 opacity-60" />
+
+          {/* Urgent Mint Nodes */}
+          <circle cx="280" cy="110" r="3.5" fill="hsl(var(--accent))" className="animate-node-pulse-mint-urgent opacity-80" />
+          <circle cx="230" cy="140" r="3" fill="hsl(var(--accent))" className="animate-node-pulse-mint-urgent animation-delay-100 opacity-70" />
+          <circle cx="290" cy="60" r="2.5" fill="hsl(var(--accent))" className="animate-node-pulse-mint-urgent animation-delay-300 opacity-60" />
+          
+          {/* Urgent Connecting Threads - Lilac */}
+          <line x1="120" y1="90" x2="170" y2="60" stroke="hsl(var(--primary))" strokeWidth="0.7" className="animate-thread-draw-fast opacity-50" />
+          <line x1="120" y1="90" x2="110" y2="140" stroke="hsl(var(--primary))" strokeWidth="0.7" className="animate-thread-draw-fast animation-delay-300 opacity-40" />
+          
+          {/* Urgent Connecting Threads - Mint */}
+          <line x1="280" y1="110" x2="230" y2="140" stroke="hsl(var(--accent))" strokeWidth="0.7" className="animate-thread-draw-fast animation-delay-50 opacity-50" />
+          <line x1="280" y1="110" x2="290" y2="60" stroke="hsl(var(--accent))" strokeWidth="0.7" className="animate-thread-draw-fast animation-delay-250 opacity-40" />
+
+          {/* Urgent Cross Connections */}
+          <line x1="120" y1="90" x2="280" y2="110" stroke="hsl(var(--muted))" strokeWidth="0.4" className="animate-thread-draw-fast animation-delay-400 opacity-20" />
+           <line x1="170" y1="60" x2="230" y2="140" stroke="hsl(var(--muted))" strokeWidth="0.3" className="animate-thread-draw-fast animation-delay-500 opacity-15" />
+        </svg>
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedElement className="max-w-2xl mx-auto">
@@ -108,3 +125,4 @@ export default function WhitelistGateSection() {
     </section>
   );
 }
+
