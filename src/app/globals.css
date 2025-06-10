@@ -1,9 +1,14 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: var(--font-inter), sans-serif; /* Default to Inter for body */
+  font-family: var(--font-space-mono), monospace; /* Default to Space Mono for body */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-space-grotesk), sans-serif; /* Space Grotesk for headlines */
 }
 
 @layer base {
@@ -100,13 +105,24 @@ body {
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-inter), sans-serif;
+    font-family: var(--font-space-mono), monospace;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline;
-    font-family: var(--font-manrope), sans-serif;
+    font-family: var(--font-space-grotesk), sans-serif;
   }
   code, pre, kbd, samp { /* Style elements that might contain code snippets */
-    @apply font-code text-accent;
+    @apply font-code text-accent; /* Assuming you define a --font-code variable if needed */
   }
+}
+
+/* CSS for the Three.js canvas */
+.webgl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  z-index: 0; /* Ensure it's behind other content which should have z-index > 0 */
 }
