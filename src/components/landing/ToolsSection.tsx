@@ -1,16 +1,16 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Award, Package, Users } from 'lucide-react'; // Updated icons: Coins -> Award, BarChartHorizontalBig -> Package (for tools/ecosystem)
+import { Award, Package, Users } from 'lucide-react'; 
 import AnimatedElement from './AnimatedElement';
 
 // Reimagined as "The Benefits Section"
 const benefits = [
   {
-    icon: Award, // Changed from Coins
+    icon: Award, 
     title: 'Attractive Staking Rewards',
     description: 'Earn passive income just for securing the network and holding BSAI tokens. Let your assets work for you while you benefit from QuantumTrader.',
   },
   {
-    icon: Package, // Changed from BarChartHorizontalBig
+    icon: Package, 
     title: 'Priority Access to Future Tools',
     description: "You're not just getting a tool; you're investing in an ecosystem. Be first in line for our Self-Custody Wallet, Swap Protocol, and AI Token Factory.",
   },
@@ -36,7 +36,7 @@ export default function BenefitsSection() {
         <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <AnimatedElement key={index} delay={`delay-${index * 100}`}>
-              <Card className="h-full shadow-xl hover:shadow-2xl transition-all duration-300 bg-card border border-border hover:border-primary/70 transform hover:-translate-y-2 group overflow-hidden hover:scale-105">
+              <Card className="h-full shadow-xl hover:shadow-2xl transition-all duration-300 bg-card border border-border hover:border-primary transform hover:-translate-y-2 group overflow-hidden hover:scale-105">
                 <CardHeader>
                   <div className="flex items-center space-x-4">
                     <div className="p-3 bg-primary/10 rounded-lg border border-primary/20 group-hover:bg-primary/20 group-hover:border-primary transition-colors">

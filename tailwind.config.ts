@@ -11,8 +11,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        headline: ['var(--font-space-grotesk)', 'sans-serif'],
-        body: ['var(--font-space-mono)', 'monospace'],
+        headline: ['var(--font-manrope)', 'sans-serif'],
+        body: ['var(--font-inter)', 'sans-serif'],
         code: ['var(--font-roboto-mono)', 'monospace'],
       },
       colors: {
@@ -140,4 +140,3 @@ export default {
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
-

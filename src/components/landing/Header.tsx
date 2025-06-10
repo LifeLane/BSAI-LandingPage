@@ -48,7 +48,7 @@ export default function Header() {
             ))}
             <Button
               variant="default"
-              className="ml-4 bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground shadow-md hover:shadow-primary/30 transition-all duration-300"
+              className="ml-4 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-md hover:shadow-primary/30 transition-all duration-300"
               onClick={() => {
                 const whitelistSection = document.getElementById('whitelist-gate');
                 if (whitelistSection) {
@@ -85,7 +85,7 @@ export default function Header() {
             ))}
             <Button
               variant="default"
-              className="w-full mt-2 bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground shadow-md hover:shadow-primary/30"
+              className="w-full mt-2 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-md hover:shadow-primary/30"
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 const whitelistSection = document.getElementById('whitelist-gate');

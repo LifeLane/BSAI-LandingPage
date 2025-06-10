@@ -10,11 +10,11 @@ export default function Hero() {
       {/* Background Visual - Placeholder for Generative Animation */}
       <div
         className="absolute inset-0 opacity-20 filter brightness-50"
-        data-ai-hint="generative quantum sphere mouse-interactive"
+        data-ai-hint="live generative quantum sphere mouse-interactive"
       >
         <div className="w-full h-full bg-transparent flex items-center justify-center">
           <p className="text-muted-foreground p-8 text-center text-lg max-w-3xl">
-            [Live Generative Background Animation: Slowly rotating, complex sphere of interconnected nodes and glowing threads of light (Quantum Lilac and Neon Mint). Subtly shifts perspective with mouse movement. Tech: Three.js/WebGL]
+            [Live Generative Background Animation: Slowly rotating, complex sphere of interconnected nodes and glowing threads of light (in Quantum Lilac and Neon Mint). Subtly shifts perspective with mouse movement. Tech: Three.js/WebGL]
           </p>
         </div>
       </div>
@@ -33,7 +33,7 @@ export default function Hero() {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-headline tracking-tight text-foreground">
             QuantumTrader:
             <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
               Where Quantum Physics Meets Market Profits.
             </span>
           </h1>
@@ -65,4 +65,3 @@ export default function Hero() {
     </section>
   );
 }
-

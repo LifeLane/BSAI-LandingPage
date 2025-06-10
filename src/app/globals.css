@@ -100,9 +100,11 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-inter), sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline;
+    font-family: var(--font-manrope), sans-serif;
   }
   code, pre, kbd, samp { /* Style elements that might contain code snippets */
     @apply font-code text-accent;

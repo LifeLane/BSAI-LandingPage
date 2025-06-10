@@ -1,13 +1,19 @@
 import type { Metadata } from 'next';
-import { Inter, Roboto_Mono } from 'next/font/google';
+import { Manrope, Inter, Roboto_Mono } from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 // Define font variables
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
+  weight: ['400', '700'],
+});
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  weight: ['400', '700'], // Regular and Bold for body and headlines
+  weight: ['400', '700'],
 });
 
 const robotoMono = Roboto_Mono({
@@ -18,7 +24,7 @@ const robotoMono = Roboto_Mono({
 
 export const metadata: Metadata = {
   title: 'BlockSmithAI: QuantumTrader',
-  description: "BlockSmithAI presents QuantumTrader: The AI-Powered toolkit for the Blockchain & Web3 space, revolutionizing trading.",
+  description: "BlocksmithAI is launching the world's first AI trade analyst powered by quantum computing. See the market moves before they happen.",
 };
 
 export default function RootLayout({
@@ -27,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${robotoMono.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${inter.variable} ${robotoMono.variable}`}>
       <body className="font-body antialiased bg-background text-foreground">
         {children}
         <Toaster />
