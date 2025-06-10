@@ -6,39 +6,45 @@ import AnimatedElement from './AnimatedElement';
 
 const useCases = [
   {
-    iconComponent: FileJson, // Renamed from icon to avoid conflict if we pass it down
+    iconComponent: FileJson, 
     title: 'Smart Contract Creation',
     description: 'Effortlessly generate custom smart contracts for various blockchain platforms.',
+    imageSrc: "https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/645c94ce88833c179c3c28ff_smart_contract_generator_feature_graphic.png",
     imageHint: "code interface contract"
   },
   {
     iconComponent: ShieldAlert,
     title: 'Security Auditing',
     description: 'Leverage AI to identify potential vulnerabilities in your smart contracts.',
+    imageSrc: "https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/645c94df08b355c45c679420_smart_contract_auditor_feature_graphic.png",
     imageHint: "security shield code"
   },
   {
     iconComponent: Aperture,
     title: 'NFT Generation & Art',
     description: 'Create unique digital art and NFT collections with AI-powered tools.',
+    imageSrc: "https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/645c94efcf9568df8cd62462_nft_generator_feature_graphic.png",
     imageHint: "abstract art digital"
   },
   {
     iconComponent: LineChart,
     title: 'Market Trend Analysis',
     description: 'Utilize AI for predictive analysis and insights into crypto market trends.',
+    imageSrc: "https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/650c0aa39a7bd7512632a0bc_AI-Trading-Assistant-p-1080.png",
     imageHint: "data chart graph"
   },
   {
     iconComponent: Lightbulb,
     title: 'Web3 Project Ideation',
     description: 'Brainstorm and validate new Web3 project ideas with AI assistance.',
+    imageSrc: "https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/645c954ce27021cf8d1c2c04_ask_crypto_people_feature_graphic.png",
     imageHint: "innovation lightbulb tech"
   },
   {
     iconComponent: Puzzle,
     title: 'dApp Development',
     description: 'Streamline decentralized application development with AI-powered coding tools.',
+    imageSrc: "https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/64a670654238061b518372e8_SDK%26API-Access-p-1080.png",
     imageHint: "puzzle pieces connection"
   },
 ];
@@ -61,7 +67,7 @@ export default function UseCasesSection() {
               <Card className="h-full shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card transform hover:-translate-y-1 overflow-hidden">
                 <div className="relative w-full h-48">
                   <Image
-                    src={`https://placehold.co/288x192.png?a=uc${index}`}
+                    src={useCase.imageSrc}
                     alt={useCase.title}
                     layout="fill"
                     objectFit="cover"

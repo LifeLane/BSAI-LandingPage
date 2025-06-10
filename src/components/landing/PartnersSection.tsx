@@ -2,12 +2,12 @@ import Image from 'next/image';
 import AnimatedElement from './AnimatedElement';
 
 const partnerLogos = [
-  { src: 'https://placehold.co/150x60.png?text=Partner+1', alt: 'Partner 1', hint: "tech logo" },
-  { src: 'https://placehold.co/150x60.png?text=Partner+2', alt: 'Partner 2', hint: "finance logo" },
-  { src: 'https://placehold.co/150x60.png?text=Partner+3', alt: 'Partner 3', hint: "blockchain logo" },
-  { src: 'https://placehold.co/150x60.png?text=Partner+4', alt: 'Partner 4', hint: "startup logo" },
-  { src: 'https://placehold.co/150x60.png?text=Partner+5', alt: 'Partner 5', hint: "innovation logo" },
-  { src: 'https://placehold.co/150x60.png?text=Partner+6', alt: 'Partner 6', hint: "web3 logo" },
+  { src: 'https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/646c658435f2c12337bc551e_google_logo.svg', alt: 'Google Logo', hint: "tech logo" },
+  { src: 'https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/646c6584334e361029a2e823_nvidia_logo.svg', alt: 'Nvidia Logo', hint: "finance logo" },
+  { src: 'https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/646c6584e255e052834e0040_bnb_chain_logo.svg', alt: 'BNB Chain Logo', hint: "blockchain logo" },
+  { src: 'https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/646c65859a43297ffc682a2e_certik_logo.svg', alt: 'Certik Logo', hint: "startup logo" },
+  { src: 'https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/646c658552d918a96198e728_tron_logo.svg', alt: 'Tron Logo', hint: "innovation logo" },
+  { src: 'https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/646c6584625009700fa714c2_kucoin_logo.svg', alt: 'KuCoin Logo', hint: "web3 logo" },
 ];
 
 export default function PartnersSection() {

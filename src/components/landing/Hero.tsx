@@ -14,8 +14,8 @@ export default function Hero() {
     <section className="relative bg-gradient-to-br from-background to-muted pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <Image
-          src="https://placehold.co/1920x1080.png?a=1"
-          alt="Abstract background"
+          src="https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/64d9d5f89cc52bd948b9d53b_Chain-GPT.jpg"
+          alt="ChainGPT themed abstract background"
           layout="fill"
           objectFit="cover"
           data-ai-hint="abstract technology network"

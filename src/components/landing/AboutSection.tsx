@@ -9,8 +9,8 @@ export default function AboutSection() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-square max-w-md mx-auto md:mx-0">
               <Image
-                src="https://placehold.co/600x600.png?a=2"
-                alt="BlockSmithAI Technology Graphic"
+                src="https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04/645a319977d1919596bf2e19_what_is_chaingpt_graphic.png"
+                alt="What is ChainGPT illustration"
                 layout="fill"
                 objectFit="contain"
                 className="rounded-lg"
