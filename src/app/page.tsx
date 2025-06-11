@@ -4,6 +4,8 @@ import SocialProofBar from '@/components/landing/PartnersSection'; // Repurposed
 import ProblemSolutionSection from '@/components/landing/AboutSection'; // Repurposed AboutSection
 import HowItWorksSection from '@/components/landing/SolutionsSection'; // Repurposed SolutionsSection
 import BenefitsSection from '@/components/landing/ToolsSection'; // Repurposed ToolsSection
+import FutureEcosystemSection from '@/components/landing/FutureEcosystemSection';
+import TokenomicsSection from '@/components/landing/TokenomicsSection';
 import WhitelistGateSection from '@/components/landing/CtaSection'; // Repurposed CtaSection
 import Footer from '@/components/landing/Footer';
 
@@ -17,6 +19,8 @@ export default function QuantumTraderPage() {
         <ProblemSolutionSection />
         <HowItWorksSection />
         <BenefitsSection />
+        <FutureEcosystemSection />
+        <TokenomicsSection />
         <WhitelistGateSection />
       </main>
       <Footer />
