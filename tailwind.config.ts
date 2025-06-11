@@ -2,7 +2,7 @@
 import type {Config} from 'tailwindcss';
 
 export default {
-  darkMode: ['class'],
+  darkMode: ['class'], // Enables class-based dark mode
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -11,44 +11,46 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        headline: ['var(--font-manrope)', 'sans-serif'],
+        // Updated to use Inter for body and Space Grotesk for headline
+        headline: ['var(--font-space-grotesk)', 'sans-serif'],
         body: ['var(--font-inter)', 'sans-serif'],
-        code: ['var(--font-roboto-mono)', 'monospace'],
+        code: ['var(--font-space-mono)', 'monospace'],
       },
       colors: {
-        background: 'hsl(var(--background))', // Deep Space Black #0A090F
-        foreground: 'hsl(var(--foreground))', // Stark White #E5E5E5
+        // Uses CSS variables defined in globals.css for themeability
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
         card: {
-          DEFAULT: 'hsl(var(--card))', // Dark Void #100F1A
-          foreground: 'hsl(var(--card-foreground))', // Stark White
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))', // Dark Void
-          foreground: 'hsl(var(--popover-foreground))', // Stark White
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
         },
         primary: {
-          DEFAULT: 'hsl(var(--primary))', // Quantum Lilac #6F42C1
-          foreground: 'hsl(var(--primary-foreground))', // Stark White for text on primary
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))', // Dark Void (used for section backgrounds like AboutSection)
-          foreground: 'hsl(var(--secondary-foreground))', // Stark White
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))', // Lunar Grey #4A4A5C
-          foreground: 'hsl(var(--muted-foreground))', // Lighter grey for muted text
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))', // Neon Mint #00E5A1
-          foreground: 'hsl(var(--accent-foreground))', // Deep Space Black for text on accent
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
         },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive))', // A vibrant red
-          foreground: 'hsl(var(--destructive-foreground))', // Stark White
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
         },
-        border: 'hsl(var(--border))', // Lunar Grey
-        input: 'hsl(var(--input))', // Dark Void for input background
-        ring: 'hsl(var(--ring))', // Quantum Lilac for focus rings
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',
@@ -85,11 +87,11 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        'pulse-lilac': { // For box-shadow pulse
+        'pulse-lilac': { 
           '0%, 100%': { boxShadow: '0 0 0 0px hsla(var(--primary), 0.7)' },
           '50%': { boxShadow: '0 0 0 10px hsla(var(--primary), 0)' },
         },
-        'pulse-mint': { // For box-shadow pulse on icons/elements
+        'pulse-mint': { 
           '0%, 100%': { transform: 'scale(1)', filter: 'drop-shadow(0 0 0px hsl(var(--accent)))' },
           '50%': { transform: 'scale(1.1)', filter: 'drop-shadow(0 0 8px hsl(var(--accent)))' },
         },
@@ -98,9 +100,9 @@ export default {
           '50%': { backgroundPosition: '100% 50%' },
         },
         'draw-line': {
-          '0%': { strokeDasharray: '0, 1000', strokeDashoffset: '0', opacity: '0.3' }, /* start invisible */
-          '40%': { strokeDasharray: '1000, 0', strokeDashoffset: '0', opacity: '1' }, /* draw in */
-          '80%, 100%': { strokeDasharray: '1000, 0', strokeDashoffset: '-1000', opacity: '0.3' }, /* fade out by drawing out */
+          '0%': { strokeDasharray: '0, 1000', strokeDashoffset: '0', opacity: '0.3' },
+          '40%': { strokeDasharray: '1000, 0', strokeDashoffset: '0', opacity: '1' },
+          '80%, 100%': { strokeDasharray: '1000, 0', strokeDashoffset: '-1000', opacity: '0.3' },
         },
         'glitch-transform': {
           '0%, 100%': { transform: 'translate(0, 0) skewX(0)' },
@@ -130,9 +132,9 @@ export default {
           '50%': { transform: 'scale(1.05)', opacity: '1' },
         },
         'thread-draw': {
-          '0%': { strokeDasharray: '0, 200', opacity: '0' }, // Max length of a line
+          '0%': { strokeDasharray: '0, 200', opacity: '0' }, 
           '50%': { strokeDasharray: '200, 200', opacity: '0.5' },
-          '100%': { strokeDasharray: '200, 200', opacity: '0.2' }, // Keep it faintly visible
+          '100%': { strokeDasharray: '200, 200', opacity: '0.2' }, 
         },
         'node-pulse-lilac-urgent': {
           '0%, 100%': { transform: 'scale(0.9)', opacity: '0.6' },
@@ -172,4 +174,3 @@ export default {
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
-

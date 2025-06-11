@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -5,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Menu, X, Sparkles } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const navigationItems = [
   { name: 'The Problem', href: '#problem-solution' },
@@ -31,9 +33,9 @@ export default function Header() {
     )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center space-x-2">
-            <Sparkles className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold font-headline text-foreground">BlockSmithAI</span>
+          <Link href="/" className="flex items-center space-x-2" id="header-logo-container">
+            <Sparkles className="h-8 w-8 text-primary" id="header-logo-icon" />
+            <span className="text-2xl font-bold font-headline text-foreground" id="header-logo-text">BlockSmithAI</span>
           </Link>
 
           <nav className="hidden md:flex space-x-1 items-center">
@@ -58,9 +60,11 @@ export default function Header() {
             >
               Get Whitelisted
             </Button>
+            <ThemeToggle className="ml-2 text-foreground hover:text-primary" />
           </nav>
 
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center">
+            <ThemeToggle className="mr-2 text-foreground hover:text-primary" />
             <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-foreground hover:text-primary">
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               <span className="sr-only">Toggle menu</span>

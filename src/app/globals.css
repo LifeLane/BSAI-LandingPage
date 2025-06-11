@@ -13,6 +13,56 @@ h1, h2, h3, h4, h5, h6 {
 
 @layer base {
   :root {
+    /* Light Theme (Default) */
+    --background: 0 0% 100%; /* White */
+    --foreground: 222.2 84% 4.9%; /* Dark Blue/Black */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Primary: Quantum Lilac (Consistent for branding) */
+    --primary: 258 51% 51%; /* #6F42C1 */
+    --primary-foreground: 0 0% 98%; /* Light color for text on primary */
+
+    /* Secondary: Light Grey */
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%; /* Slightly lighter dark blue */
+
+    --muted: 0 0% 96.1%; /* Light Grey */
+    --muted-foreground: 215.4 16.3% 46.9%; /* Medium Grey */
+
+    /* Accent: Neon Mint (Consistent for branding) */
+    --accent: 162 100% 45%; /* #00E5A1 */
+    --accent-foreground: 248 17% 5%; /* Deep Space Black for text on accent */
+    
+    --destructive: 0 84.2% 60.2%; /* A vibrant red for light theme */
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 89.8%; /* Light Grey Border */
+    --input: 0 0% 89.8%; /* Light Grey Input Background */
+    --ring: 258 51% 51%; /* Quantum Lilac for focus rings */
+
+    --chart-1: 258 51% 51%; 
+    --chart-2: 162 100% 45%; 
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%; /* Lighter for light theme */
+    --sidebar-foreground: 222.2 84% 4.9%;
+    --sidebar-primary: 258 51% 51%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 162 100% 45%;
+    --sidebar-accent-foreground: 248 17% 5%;
+    --sidebar-border: 0 0% 89.8%;
+    --sidebar-ring: 258 51% 51%;
+  }
+
+  .dark {
     --background: 248 17% 5%; /* Deep Space Black #0A090F */
     --foreground: 0 0% 90%; /* Stark White #E5E5E5 */
 
@@ -44,46 +94,8 @@ h1, h2, h3, h4, h5, h6 {
     --input: 240 17% 8%; /* Dark Void for input background */
     --ring: 258 51% 51%; /* Quantum Lilac for focus rings */
 
-    --chart-1: 258 51% 51%; /* Quantum Lilac */
-    --chart-2: 162 100% 45%; /* Neon Mint */
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --radius: 0.5rem;
-
-    --sidebar-background: 240 17% 8%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 258 51% 51%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 162 100% 45%;
-    --sidebar-accent-foreground: 248 17% 5%;
-    --sidebar-border: 240 10% 32%;
-    --sidebar-ring: 258 51% 51%;
-  }
-
-  /* The .dark class is not strictly necessary if the default is dark, but kept for consistency */
-  .dark {
-    --background: 248 17% 5%;
-    --foreground: 0 0% 90%;
-    --card: 240 17% 8%;
-    --card-foreground: 0 0% 90%;
-    --popover: 240 17% 8%;
-    --popover-foreground: 0 0% 90%;
-    --primary: 258 51% 51%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 17% 8%;
-    --secondary-foreground: 0 0% 90%;
-    --muted: 240 10% 32%;
-    --muted-foreground: 0 0% 70%;
-    --accent: 162 100% 45%;
-    --accent-foreground: 248 17% 5%;
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 10% 32%;
-    --input: 240 17% 8%;
-    --ring: 258 51% 51%;
-    --chart-1: 258 51% 51%;
-    --chart-2: 162 100% 45%;
+    --chart-1: 258 51% 51%; 
+    --chart-2: 162 100% 45%; 
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
@@ -112,7 +124,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-space-grotesk), sans-serif;
   }
   code, pre, kbd, samp { /* Style elements that might contain code snippets */
-    @apply font-code text-accent; /* Assuming you define a --font-code variable if needed */
+    @apply font-code text-accent; 
   }
 }
 
@@ -125,4 +137,5 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   outline: none;
   z-index: 0; /* Ensure it's behind other content which should have z-index > 0 */
+  pointer-events: none;
 }
