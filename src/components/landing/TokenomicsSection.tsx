@@ -36,14 +36,13 @@ export default function TokenomicsSection() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top center+=100", // Start animation when the top of the section is 100px above the center of the viewport
-        toggleActions: "play none none none", // Play the animation once when it enters the viewport
+        start: "top center+=100", 
+        toggleActions: "play none none none", 
       }
     });
 
-    // Max Supply count-up animation
     if (maxSupplyRef.current) {
-      const supplyTarget = 1000000000; // Example: 1 Billion
+      const supplyTarget = 1000000000; 
       const supplyObject = { value: 0 };
       tl.to(supplyObject, {
         value: supplyTarget,
@@ -54,10 +53,9 @@ export default function TokenomicsSection() {
             maxSupplyRef.current.textContent = Math.round(supplyObject.value).toLocaleString() + ' BSAI';
           }
         }
-      }, "start"); // Label "start" to sync animations
+      }, "start"); 
     }
 
-    // Bar and percentage text animations
     itemRefs.current.forEach((el, index) => {
       if (el) {
         const bar = el.querySelector(".token-bar-fill") as HTMLDivElement;
@@ -68,7 +66,7 @@ export default function TokenomicsSection() {
           tl.fromTo(bar, 
             { width: '0%' }, 
             { width: `${data.percentage}%`, duration: 1.5, ease: "power2.out" }
-          , `start+=${index * 0.15}`); // Stagger start times
+          , `start+=${index * 0.15}`); 
         }
         if (percentageText) {
           const percentageObject = { value: 0 };
@@ -80,14 +78,13 @@ export default function TokenomicsSection() {
               duration: 0.5, 
               ease: "power1.out",
             }
-          , `start+=${index * 0.15 + 0.5}`); // Stagger and delay text appearance
+          , `start+=${index * 0.15 + 0.5}`); 
         }
       }
     });
 
     return () => {
-      tl.kill(); // Kill the timeline to prevent memory leaks
-      // If ScrollTrigger created any tweens directly on the element (not part of tl), kill them too.
+      tl.kill(); 
       if (ScrollTrigger.getTweensOf(sectionRef.current).length > 0) {
           ScrollTrigger.killTweensOf(sectionRef.current);
       }
@@ -97,7 +94,7 @@ export default function TokenomicsSection() {
         }
       });
     };
-  }, []); // Rerun if tokenomicsDetails changes, though it's static here.
+  }, []); 
 
   return (
     <section id="tokenomics" className="relative py-16 md:py-24 overflow-hidden w-full" ref={sectionRef}>
@@ -115,7 +112,7 @@ export default function TokenomicsSection() {
         </AnimatedElement>
         
         <AnimatedElement className="flex justify-center">
-          <Card className="w-full max-w-xl shadow-xl bg-card/70 backdrop-blur-sm border border-border hover:border-primary/70 transform transition-all duration-300 hover:-translate-y-1">
+          <Card className="w-full max-w-lg shadow-xl bg-card/70 backdrop-blur-sm border border-border hover:border-primary/70 transform transition-all duration-300 hover:-translate-y-1">
             <CardHeader className="text-center">
               <CardTitle className="font-headline text-2xl text-foreground group-hover:text-primary transition-colors">
                 BSAI Token Distribution
@@ -127,25 +124,25 @@ export default function TokenomicsSection() {
                   Max Supply: <span ref={maxSupplyRef} className="text-primary font-bold">0 BSAI</span>
                 </p>
               </div>
-              <div className="space-y-5">
+              <div className="space-y-3">
                 {tokenomicsDetails.map((item, index) => (
                   <div 
                     key={item.label} 
-                    className="flex flex-col sm:flex-row items-start sm:items-center hover:scale-[1.02] transition-transform duration-200 cursor-default p-2 rounded-md hover:bg-muted/50"
-                    ref={addToRefs} // Use the callback ref here
+                    className="flex flex-col sm:flex-row items-start sm:items-center hover:scale-[1.02] transition-transform duration-200 cursor-default px-2 py-1.5 rounded-md hover:bg-muted/50"
+                    ref={addToRefs} 
                   >
                     <span className="w-full sm:w-2/5 text-sm text-muted-foreground sm:text-right sm:pr-3 mb-1 sm:mb-0">{item.label}:</span>
                     <div className="w-full sm:w-3/5 flex items-center">
-                      <div className="flex-grow h-5 bg-muted rounded-sm overflow-hidden relative mr-2 sm:mr-3">
+                      <div className="flex-grow h-4 bg-muted rounded-sm overflow-hidden relative mr-2 sm:mr-3">
                         <div 
                           className="token-bar-fill absolute top-0 left-0 h-full rounded-sm"
                           style={{ 
-                            width: '0%', // Initial width for animation
+                            width: '0%', 
                             backgroundColor: item.color 
                           }} 
                         ></div>
                       </div>
-                      <span className="token-percentage-text text-sm font-semibold text-foreground w-12 text-left opacity-0">
+                      <span className="token-percentage-text text-sm font-semibold text-foreground w-10 text-left opacity-0">
                         {item.value}
                       </span>
                     </div>
@@ -162,5 +159,3 @@ export default function TokenomicsSection() {
     </section>
   );
 }
-
-    
