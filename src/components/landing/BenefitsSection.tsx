@@ -22,6 +22,31 @@ const benefits = [
   },
 ];
 
+const futureEcosystem = [
+  {
+    title: 'Quantum-Safe Self-Custody Wallet',
+  },
+  {
+    title: 'AI-Powered Token Creator',
+  },
+  {
+    title: 'Quantum Liquidity Protocol',
+  },
+  {
+    title: 'Self-Regulating AI DAO Governance',
+  },
+];
+
+const tokenomics = [
+  { label: 'Max Supply', value: '1,000,000,000 BSAI' },
+  { label: '40%', value: 'Ecosystem & Rewards' },
+  { label: '20%', value: 'Team (Locked 24 months)' },
+  { label: '15%', value: 'Liquidity' },
+  { label: '10%', value: 'Public Sale' },
+  { label: '10%', value: 'Treasury & DAO' },
+  { label: '5%', value: 'Marketing & Partnerships' },
+];
+
 export default function BenefitsSection() {
   return (
     <section id="benefits" className="relative py-16 md:py-24 overflow-hidden">
@@ -31,7 +56,7 @@ export default function BenefitsSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedElement className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground">
-            More Than Just Tools, It's an <span className="text-primary">Ecosystem of Rewards</span>
+            More Than Just Tools, It's an <span className="text-primary">Ecosystem</span>\
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground font-body">
             Becoming a BSAI holder unlocks a suite of benefits designed for long-term value and community growth.
