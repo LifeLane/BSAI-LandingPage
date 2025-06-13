@@ -19,7 +19,7 @@ export default function Hero() {
        <div className="absolute top-1/4 left-1/4 w-56 h-56 bg-primary/5 rounded-full filter blur-3xl animate-quantum-orb-primary opacity-30 z-0"></div>
        <div className="absolute bottom-1/4 right-1/4 w-56 h-56 bg-accent/5 rounded-full filter blur-3xl animate-quantum-orb-accent opacity-30 z-0"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
         <AnimatedElement className="text-center" animationClass="animate-fade-in-up">
           <p className="text-md sm:text-lg font-body text-accent mb-4 tracking-wider uppercase hero-preheadline">
             For the 1% of Traders Ready for the 99% Advantage.

@@ -5,6 +5,7 @@ import Script from 'next/script';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from '@/components/ThemeProvider';
+// Removed import of StickyHeader from here
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -42,7 +43,8 @@ export default function RootLayout({
         {/* Add Three.js CDN Script */}
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" strategy="beforeInteractive" />
       </head>
-      <body className="font-body antialiased bg-background text-foreground">
+      <body className="font-body antialiased bg-background text-foreground"> {/* pt-12 was already removed */}
+        {/* StickyHeader component removed from here */}
         <ThemeProvider defaultTheme="light" storageKey="quantumtrader-theme">
           {children}
           <Toaster />

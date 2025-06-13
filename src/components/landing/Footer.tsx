@@ -49,9 +49,9 @@ export default function Footer() {
         <HeroParticleAnimation />
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 text-center">
           <div className="mb-6 md:mb-0">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
+            <Link href="/" className="flex items-center space-x-2 mb-4 justify-center md:justify-start">
               <Sparkles className="h-8 w-8 text-primary" />
               <span className="text-2xl font-bold font-headline">BlockSmithAI</span>
             </Link>
@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
 
           {footerLinks.map((section) => (
-            <div key={section.category}>
+            <div key={section.category} className="hidden md:block">
               <h3 className="text-md font-headline font-semibold mb-4">{section.category}</h3>
               <ul className="space-y-2">
                 {section.links.map((link) => (
@@ -76,7 +76,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center justify-center">
           <p className="text-sm text-muted-foreground mb-4 md:mb-0">
             &copy; {new Date().getFullYear()} BlockSmithAI. All rights reserved.
           </p>

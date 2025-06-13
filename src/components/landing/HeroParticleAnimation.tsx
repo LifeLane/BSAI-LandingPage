@@ -3,11 +3,13 @@
 
 import type React from 'react';
 import { useEffect, useRef } from 'react';
+import { useTheme } from '@/components/ThemeProvider'; // Ensure useTheme is imported
 
 // THREE will be available globally from the CDN script in layout.tsx
 
 const HeroParticleAnimation: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { theme } = useTheme(); // Get current theme
 
   useEffect(() => {
     // Ensure THREE is loaded
@@ -41,15 +43,41 @@ const HeroParticleAnimation: React.FC = () => {
     const count = 5000; // Number of particles
 
     const positions = new Float32Array(count * 3);
-    for (let i = 0; i < count * 3; i++) {
-      positions[i] = (Math.random() - 0.5) * 10;
+    const particleColorsArray = new Float32Array(count * 3); // Renamed to avoid conflict
+
+    const colorLight = new THREE.Color(0x6F42C1); // Quantum Lilac for light mode
+    const colorDarkYellow = new THREE.Color(0xFFFF00); // Bright Yellow for dark mode
+    const colorDarkGreen = new THREE.Color(0x00FF00); // Bright Green for dark mode
+
+    for (let i = 0; i < count; i++) {
+      const i3 = i * 3;
+      positions[i3] = (Math.random() - 0.5) * 10;
+      positions[i3 + 1] = (Math.random() - 0.5) * 10;
+      positions[i3 + 2] = (Math.random() - 0.5) * 10;
+
+      if (theme === 'dark') {
+        if (i % 2 === 0) { // Alternate between yellow and green for dark mode
+          particleColorsArray[i3] = colorDarkYellow.r;
+          particleColorsArray[i3 + 1] = colorDarkYellow.g;
+          particleColorsArray[i3 + 2] = colorDarkYellow.b;
+        } else {
+          particleColorsArray[i3] = colorDarkGreen.r;
+          particleColorsArray[i3 + 1] = colorDarkGreen.g;
+          particleColorsArray[i3 + 2] = colorDarkGreen.b;
+        }
+      } else { // Light mode
+        particleColorsArray[i3] = colorLight.r;
+        particleColorsArray[i3 + 1] = colorLight.g;
+        particleColorsArray[i3 + 2] = colorLight.b;
+      }
     }
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    particlesGeometry.setAttribute('color', new THREE.BufferAttribute(particleColorsArray, 3));
 
     const particlesMaterial = new THREE.PointsMaterial({
       size: 0.02,
       sizeAttenuation: true,
-      color: 0x6F42C1, // Quantum Lilac
+      vertexColors: true, // Enable vertex colors - this is key
     });
 
     const particles = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -63,11 +91,12 @@ const HeroParticleAnimation: React.FC = () => {
     const windowHalfX = window.innerWidth / 2;
     const windowHalfY = window.innerHeight / 2;
 
-    function onDocumentMouseMove(event: MouseEvent) {
+    // Renamed to avoid conflict if another onDocumentMouseMove exists in global scope
+    const onMouseMoveParticles = (event: MouseEvent) => {
       mouseX = (event.clientX - windowHalfX);
       mouseY = (event.clientY - windowHalfY);
-    }
-    document.addEventListener('mousemove', onDocumentMouseMove);
+    };
+    document.addEventListener('mousemove', onMouseMoveParticles);
 
     // 6. Animation Loop
     const clock = new THREE.Clock();
@@ -99,28 +128,37 @@ const HeroParticleAnimation: React.FC = () => {
 
     // Cleanup function
     return () => {
-      window.cancelAnimationFrame(animationFrameId);
-      document.removeEventListener('mousemove', onDocumentMouseMove);
+      if (animationFrameId) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
+      document.removeEventListener('mousemove', onMouseMoveParticles);
       window.removeEventListener('resize', handleResize);
-      renderer.dispose();
-      particlesGeometry.dispose();
-      particlesMaterial.dispose();
-      scene.remove(particles);
-      // Traverse the scene to dispose of any other objects if necessary
-      scene.traverse(object => {
-        if (object instanceof THREE.Mesh) {
-          if (object.geometry) object.geometry.dispose();
-          if (object.material) {
-            if (Array.isArray(object.material)) {
-              object.material.forEach(material => material.dispose());
-            } else {
-              object.material.dispose();
+      
+      // Dispose of Three.js objects
+      if (scene) {
+        if (particles && particles.parent === scene) { // Check if particles is still a child before removing
+            scene.remove(particles);
+        }
+        scene.traverse(object => {
+          if (object instanceof THREE.Points) {
+            if (object.geometry) object.geometry.dispose();
+            if (object.material) {
+                // @ts-ignore PointsMaterial is Material
+                if (Array.isArray(object.material)) object.material.forEach(m => m.dispose()); else object.material.dispose();
+            }
+          } else if (object instanceof THREE.Mesh) { // For any other meshes, if any
+            if (object.geometry) object.geometry.dispose();
+            if (object.material) {
+                if (Array.isArray(object.material)) object.material.forEach(m => m.dispose()); else object.material.dispose();
             }
           }
-        }
-      });
+        });
+      }
+      if (particlesGeometry) particlesGeometry.dispose();
+      if (particlesMaterial) particlesMaterial.dispose();
+      if (renderer) renderer.dispose();
     };
-  }, []); // Empty dependency array ensures this runs once on mount and cleans up on unmount
+  }, [theme]); // Effect re-runs when theme changes
 
   return <canvas ref={canvasRef} className="webgl"></canvas>;
 };
