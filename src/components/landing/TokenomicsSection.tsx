@@ -57,7 +57,7 @@ export default function TokenomicsSection() {
       const supplyObject = { value: 0 };
       tl.to(supplyObject, {
         value: supplyTarget,
-        duration: 1.5, // Slightly faster
+        duration: 1.5, 
         ease: "power1.out",
         onUpdate: () => {
           if (maxSupplyRef.current) {
@@ -87,46 +87,39 @@ export default function TokenomicsSection() {
         }
       }
     });
-
+    
     return () => {
-      tl.kill(); 
-      if (ScrollTrigger.getTweensOf(sectionRef.current).length > 0) {
-          ScrollTrigger.killTweensOf(sectionRef.current);
-      }
-       itemRefs.current.forEach(el => {
-        if (el && ScrollTrigger.getTweensOf(el).length > 0) {
-          ScrollTrigger.killTweensOf(el);
-        }
-      });
+      tl.kill();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []); 
 
   return (
-    <section id="tokenomics" className="relative py-12 md:py-20 overflow-hidden w-full" ref={sectionRef}>
+    <section id="tokenomics" className="relative py-16 md:py-24 overflow-hidden w-full" ref={sectionRef}>
       <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
         <HeroParticleAnimation />
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <AnimatedElement className="text-center mb-10 md:mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold font-headline text-foreground">
+        <AnimatedElement className="text-center mb-10 md:mb-16">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-headline text-foreground">
             🧬 BSAI — The <span className="text-primary">Neural Fuel</span>
           </h2>
-          <CardDescription className="mt-3 text-md sm:text-lg text-muted-foreground font-body max-w-xl mx-auto">
+          <CardDescription className="mt-4 text-xl sm:text-2xl text-muted-foreground font-body max-w-2xl mx-auto">
             This isn’t governance. This is communion. BSAI is how you sync with Shadow.
           </CardDescription>
         </AnimatedElement>
         
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+        <div className="grid grid-cols-1 gap-8 md:gap-12 items-start">
           <AnimatedElement delay="delay-100">
-            <Card className="h-full shadow-xl bg-card/70 backdrop-blur-sm border border-border/50 hover:border-primary/50 transform transition-all duration-300 hover:-translate-y-1">
-              <CardHeader>
+            <Card className="w-full h-full shadow-xl bg-card/70 backdrop-blur-sm border border-border/50 hover:border-primary/50 transform transition-all duration-300 hover:-translate-y-1.5">
+              <CardHeader className="pb-4">
                 <div className="flex items-center space-x-3">
-                  <ListChecks className="h-7 w-7 text-primary" />
-                  <CardTitle className="text-xl sm:text-2xl font-headline text-foreground">Use BSAI to:</CardTitle>
+                  <ListChecks className="h-8 w-8 md:h-9 md:w-9 text-primary" />
+                  <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-headline text-foreground">Use BSAI to:</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-2 pl-8 pr-4 sm:pr-6">
-                <ul className="list-disc list-outside space-y-1.5 text-sm text-muted-foreground marker:text-primary">
+                <ul className="list-disc list-outside space-y-2 text-lg sm:text-xl text-muted-foreground marker:text-primary">
                   {bsaiUses.map((use, index) => (
                     <li key={index} className="group hover:text-foreground transition-colors">{use}</li>
                   ))}
@@ -136,30 +129,30 @@ export default function TokenomicsSection() {
           </AnimatedElement>
 
           <AnimatedElement>
-            <Card className="h-full shadow-xl bg-card/70 backdrop-blur-sm border border-border/50 hover:border-primary/50 transform transition-all duration-300 hover:-translate-y-1">
-              <CardHeader>
+            <Card className="w-full h-full shadow-xl bg-card/70 backdrop-blur-sm border border-border/50 hover:border-primary/50 transform transition-all duration-300 hover:-translate-y-1.5">
+              <CardHeader className="pb-4">
                 <div className="flex items-center space-x-3">
-                   <BarChartHorizontalBig className="h-7 w-7 text-primary" />
-                   <CardTitle className="text-xl sm:text-2xl font-headline text-foreground">Token Allocation</CardTitle>
+                   <BarChartHorizontalBig className="h-8 w-8 md:h-9 md:w-9 text-primary" />
+                   <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-headline text-foreground">Token Allocation</CardTitle>
                 </div>
               </CardHeader>
-              <CardContent className="px-4 sm:px-6 py-6 space-y-4">
-                <div className="text-center mb-3">
-                  <p className="text-lg md:text-xl font-semibold text-muted-foreground">
+              <CardContent className="px-4 sm:px-6 py-6 space-y-5">
+                <div className="text-center mb-4">
+                  <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-muted-foreground">
                     Supply: <span ref={maxSupplyRef} className="text-primary font-bold">0</span> BSAI (hard cap)
                   </p>
-                  <p className="text-sm text-muted-foreground">Launch Type: Public Genesis Offering</p>
+                  <p className="text-lg sm:text-xl text-muted-foreground">Launch Type: Public Genesis Offering</p>
                 </div>
-                <div className="space-y-2.5">
+                <div className="space-y-3">
                   {tokenomicsDetails.map((item, index) => (
                     <div 
                       key={item.label} 
-                      className="flex flex-col sm:flex-row items-start sm:items-center hover:bg-muted/30 px-1.5 py-1 rounded-md transition-colors duration-150"
+                      className="flex flex-col sm:flex-row items-start sm:items-center hover:bg-muted/30 px-1.5 py-1.5 rounded-md transition-colors duration-150"
                       ref={addToRefs} 
                     >
-                      <span className="w-full sm:w-2/5 text-xs text-muted-foreground sm:text-right sm:pr-2 mb-0.5 sm:mb-0">{item.label}:</span>
+                      <span className="w-full sm:w-2/5 text-base sm:text-lg text-muted-foreground sm:text-right sm:pr-2 mb-0.5 sm:mb-0">{item.label}:</span>
                       <div className="w-full sm:w-3/5 flex items-center">
-                        <div className="flex-grow h-3 bg-muted rounded-sm overflow-hidden relative mr-2">
+                        <div className="flex-grow h-3.5 bg-muted rounded-sm overflow-hidden relative mr-2">
                           <div 
                             className="token-bar-fill absolute top-0 left-0 h-full rounded-sm"
                             style={{ 
@@ -168,7 +161,7 @@ export default function TokenomicsSection() {
                             }} 
                           ></div>
                         </div>
-                        <span className="token-percentage-text text-xs font-semibold text-foreground w-10 text-left opacity-0">
+                        <span className="token-percentage-text text-base sm:text-lg font-semibold text-foreground w-12 text-left opacity-0">
                           {item.value}
                         </span>
                       </div>
@@ -179,15 +172,13 @@ export default function TokenomicsSection() {
             </Card>
           </AnimatedElement>
         </div>
-         <AnimatedElement className="mt-10 text-center space-x-4">
-            <Button size="lg" className="px-8 py-3 text-md font-headline bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-lg hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300 glow-button">
-                <ShoppingCart className="mr-2 h-5 w-5" /> Join the Sale
+         <AnimatedElement className="mt-12 md:mt-16 text-center space-y-4 sm:space-y-0 sm:space-x-6">
+            <Button size="lg" className="w-full sm:w-auto px-10 py-7 text-xl sm:text-2xl font-headline bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-lg hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300 glow-button">
+                <ShoppingCart className="mr-2.5 h-6 w-6" /> 🎯 Join the Sale
             </Button>
-             {/*
-            <Button variant="outline" size="lg" className="px-8 py-3 text-md font-headline text-foreground hover:bg-primary/10 hover:border-primary">
-                <Coins className="mr-2 h-5 w-5" /> View Tokenomics Details
+            <Button variant="outline" size="lg" className="w-full sm:w-auto px-10 py-7 text-xl sm:text-2xl font-headline text-foreground hover:bg-primary/10 hover:border-primary">
+                <Coins className="mr-2.5 h-6 w-6" /> 🧠 View Tokenomics
             </Button>
-            */}
         </AnimatedElement>
       </div>
     </section>
