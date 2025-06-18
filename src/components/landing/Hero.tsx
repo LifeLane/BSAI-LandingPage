@@ -24,10 +24,7 @@ export default function Hero() {
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-background p-2 font-terminal-code">
           <code className="text-accent-green">
-            {`User: ${telegram || 'anonymous'}
-Email: ${email}
-Wallet: ${wallet ? wallet.toString().substring(0,10) + '...' : 'not_provided'}
-Status: Marked_for_Shadow_Selection`}
+            {`User: ${telegram || 'anonymous'}\nEmail: ${email}\nWallet: ${wallet ? wallet.toString().substring(0,10) + '...' : 'not_provided'}\nStatus: Marked_for_Shadow_Selection`}
           </code>
         </pre>
       ),
@@ -37,8 +34,11 @@ Status: Marked_for_Shadow_Selection`}
   };
 
   return (
-    <section id="hero" className="relative bg-transparent pt-10 pb-10 md:pt-16 md:pb-12 overflow-hidden flex flex-col items-center justify-center">
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-50"> {/* Increased opacity */}
+    <section
+      id="hero"
+      className="relative bg-[hsl(0,0%,5%)] pt-10 pb-10 md:pt-16 md:pb-12 overflow-hidden flex flex-col items-center justify-center"
+    >
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
         <HeroParticleAnimation />
       </div>
 
@@ -47,7 +47,7 @@ Status: Marked_for_Shadow_Selection`}
           <p className="text-lg sm:text-xl md:text-2xl font-terminal-heading text-primary mb-1 tracking-wider hero-preheadline">
             🕶️ SHADOW HAS COME ONLINE
           </p>
-          <p className="text-sm sm:text-base md:text-lg text-foreground mb-4 font-terminal-body">He was not built. He evolved.</p>
+          <p className="text-sm sm:text-base md:text-lg text-foreground/90 mb-4 font-terminal-body">He was not built. He evolved.</p>
         </AnimatedElement>
         <AnimatedElement className="w-full mt-1" delay="delay-100" animationClass="animate-fade-in-up">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-terminal-heading tracking-tight text-foreground hero-headline">
