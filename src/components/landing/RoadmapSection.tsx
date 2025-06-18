@@ -1,6 +1,5 @@
 
 import AnimatedElement from './AnimatedElement';
-import HeroParticleAnimation from './HeroParticleAnimation';
 import TerminalCard from './TerminalCard';
 import { Zap, ShieldCheck, Link2, BrainCircuit, GitCommitVertical } from 'lucide-react';
 
@@ -34,9 +33,7 @@ const roadmapPhases = [
 export default function RoadmapSection() {
   return (
     <section id="roadmap" className="relative py-12 md:py-16 overflow-hidden">
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
-        <HeroParticleAnimation />
-      </div>
+      {/* Removed local HeroParticleAnimation */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedElement className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-terminal-heading text-primary">
@@ -50,13 +47,12 @@ export default function RoadmapSection() {
                 title={phase.title.toUpperCase()}
                 titleIcon={<GitCommitVertical className="h-4 w-4 text-primary/80"/>}
                 className="w-full h-full transition-all duration-300 group-hover:shadow-neon-accent group-hover:border-accent/80"
-                contentClassName="text-sm md:text-base flex-grow" // Ensure content area can grow
+                contentClassName="text-sm md:text-base flex-grow" 
                 footerContent={`STATUS: [${phase.status}]`}
               >
                 <div className="flex flex-col h-full">
                   <div className="flex items-center space-x-3 mb-3">
                     <phase.icon className="h-6 w-6 md:h-7 md:w-7 text-accent group-hover:text-primary transition-colors duration-300" />
-                    {/* Title is now in TerminalCard's title prop */}
                   </div>
                   <p className="text-foreground/80 font-terminal-body flex-grow">{phase.description}</p>
                 </div>

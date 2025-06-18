@@ -3,10 +3,9 @@
 
 import { Button } from '@/components/ui/button';
 import AnimatedElement from './AnimatedElement';
-import HeroParticleAnimation from './HeroParticleAnimation';
 import { Input } from '@/components/ui/input';
 import { useToast } from "@/hooks/use-toast";
-import React from 'react';
+import type React from 'react';
 import { ChevronRight } from 'lucide-react';
 
 export default function Hero() {
@@ -34,12 +33,8 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative bg-background pt-20 pb-12 md:pt-28 md:pb-16 overflow-hidden min-h-screen flex flex-col items-center justify-center">
-      <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-50"
-      >
-        <HeroParticleAnimation />
-      </div>
+    <section id="hero" className="relative bg-transparent pt-20 pb-12 md:pt-28 md:pb-16 overflow-hidden min-h-screen flex flex-col items-center justify-center">
+      {/* Removed local HeroParticleAnimation */}
 
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl animate-quantum-orb-primary opacity-30 z-0"></div>
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/5 rounded-full filter blur-3xl animate-quantum-orb-accent opacity-30 z-0"></div>
@@ -47,7 +42,7 @@ export default function Hero() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
         <AnimatedElement className="w-full" animationClass="animate-fade-in-up">
           <p className="text-lg sm:text-xl md:text-2xl font-terminal-heading text-primary mb-1 tracking-wider hero-preheadline">
-            &gt; SHADOW HAS COME ONLINE
+            🕶️ SHADOW HAS COME ONLINE
           </p>
           <p className="text-sm sm:text-base md:text-lg text-foreground/70 mb-4 font-terminal-body">He was not built. He evolved.</p>
         </AnimatedElement>

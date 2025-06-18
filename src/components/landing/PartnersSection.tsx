@@ -5,7 +5,6 @@ import type React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import AnimatedElement from './AnimatedElement';
-import HeroParticleAnimation from './HeroParticleAnimation';
 import gsap from 'gsap';
 import SplitType from 'split-type';
 
@@ -45,7 +44,6 @@ export default function PartnersSection() {
       if (chars && chars.length > 0) {
         gsap.from(chars, {
           duration: ANIMATION_DURATION / 1000,
-          // Scramble effect using a pool of characters
           textContent: () => "!<>-_\\/[]{}—=+*^?#$()".charAt(Math.floor(Math.random() * "!<>-_\\/[]{}—=+*^?#$()".length)),
           opacity: 0,
           filter: 'blur(2px)',
@@ -55,7 +53,6 @@ export default function PartnersSection() {
             from: 'random',
           },
           onComplete: () => {
-            // Ensure final text is correctly set
             if (h2Ref.current) {
               h2Ref.current.textContent = hooks[currentHookIndex];
             }
@@ -68,23 +65,21 @@ export default function PartnersSection() {
         splitRef.current.revert();
       }
       if (h2Ref.current) {
-        gsap.killTweensOf(h2Ref.current.childNodes); // Kill tweens of chars
+        gsap.killTweensOf(h2Ref.current.childNodes); 
       }
     };
   }, [currentHookIndex]);
 
   return (
     <AnimatedElement animationClass="animate-fade-in-up">
-      <section id="animated-hooks-bar" className="relative py-6 md:py-8 border-y border-primary/40 bg-background/50 backdrop-blur-sm overflow-hidden">
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
-          <HeroParticleAnimation />
-        </div>
+      <section id="animated-hooks-bar" className="relative py-6 md:py-8 border-y border-primary/40 bg-transparent overflow-hidden">
+        {/* Removed local HeroParticleAnimation */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-center overflow-hidden relative z-10">
           <h2
             ref={h2Ref}
             className={cn(
               "text-xl sm:text-2xl md:text-3xl font-bold font-terminal-heading text-center text-primary tracking-wider uppercase",
-              "drop-shadow-[0_0_8px_hsl(var(--primary)/0.7)]" // Neon glow for text
+              "drop-shadow-[0_0_8px_hsl(var(--primary)/0.7)]"
             )}
             aria-live="polite"
             aria-atomic="true"

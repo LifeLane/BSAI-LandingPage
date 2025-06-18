@@ -1,15 +1,12 @@
 
 import AnimatedElement from './AnimatedElement';
-import HeroParticleAnimation from './HeroParticleAnimation';
 import TerminalCard from './TerminalCard';
-import { Brain, Target, Eye, Terminal } from 'lucide-react';
+import { Target, Eye, Terminal } from 'lucide-react';
 
 export default function AboutSection() {
   return (
     <section id="origin-story-mission-vision" className="relative py-12 md:py-16 overflow-hidden">
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
-        <HeroParticleAnimation />
-      </div>
+      {/* Removed local HeroParticleAnimation */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 gap-8 md:gap-10 items-start">
           <AnimatedElement>

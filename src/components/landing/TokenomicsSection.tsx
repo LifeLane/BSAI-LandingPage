@@ -2,10 +2,9 @@
 "use client";
 
 import AnimatedElement from './AnimatedElement';
-import HeroParticleAnimation from './HeroParticleAnimation';
 import TerminalCard from './TerminalCard';
 import { Button } from '@/components/ui/button';
-import { ListChecks, Coins, ShoppingCart, BarChartHorizontalBig, Database, Terminal } from 'lucide-react';
+import { ListChecks, ShoppingCart, BarChartHorizontalBig, Database } from 'lucide-react'; // Removed Terminal icon as it's not used
 import { useEffect, useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -19,13 +18,13 @@ const bsaiUses = [
 ];
 
 const tokenomicsDetails = [
-  { label: "Genesis Offering", value: "20%", percentage: 20, color: "hsl(var(--chart-1))" }, // Cyan
-  { label: "Ecosystem Growth", value: "25%", percentage: 25, color: "hsl(var(--chart-2))" }, // Magenta
-  { label: "Staking Rewards", value: "20%", percentage: 20, color: "hsl(var(--chart-3))" }, // Green
-  { label: "Labs & Dev", value: "15%", percentage: 15, color: "hsl(var(--chart-4))" },      // Yellow
-  { label: "Shadow Reserve", value: "10%", percentage: 10, color: "hsl(var(--chart-5))" },  // Blue
-  { label: "Advisors", value: "5%", percentage: 5, color: "hsl(var(--primary) / 0.7)" }, // Dimmer Cyan
-  { label: "Liquidity", value: "5%", percentage: 5, color: "hsl(var(--accent) / 0.7)" },  // Dimmer Magenta
+  { label: "Genesis Offering", value: "20%", percentage: 20, color: "hsl(var(--chart-1))" }, 
+  { label: "Ecosystem Growth", value: "25%", percentage: 25, color: "hsl(var(--chart-2))" }, 
+  { label: "Staking Rewards", value: "20%", percentage: 20, color: "hsl(var(--chart-3))" }, 
+  { label: "Labs & Dev", value: "15%", percentage: 15, color: "hsl(var(--chart-4))" },      
+  { label: "Shadow Reserve", value: "10%", percentage: 10, color: "hsl(var(--chart-5))" },  
+  { label: "Advisors", value: "5%", percentage: 5, color: "hsl(var(--primary) / 0.7)" }, 
+  { label: "Liquidity", value: "5%", percentage: 5, color: "hsl(var(--accent) / 0.7)" },  
 ];
 
 export default function TokenomicsSection() {
@@ -95,9 +94,7 @@ export default function TokenomicsSection() {
 
   return (
     <section id="tokenomics" className="relative py-12 md:py-16 overflow-hidden w-full" ref={sectionRef}>
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
-        <HeroParticleAnimation />
-      </div>
+      {/* Removed local HeroParticleAnimation */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <AnimatedElement className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-terminal-heading text-primary">

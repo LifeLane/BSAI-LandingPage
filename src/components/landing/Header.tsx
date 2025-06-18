@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <header className={cn(
-      "w-full z-30 bg-background/50 backdrop-blur-sm shadow-md border-b border-primary/30", // Changed bg-background/80 to bg-background/50
+      "sticky top-0 w-full z-30 bg-transparent backdrop-blur-sm border-b border-primary/30",
     )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">

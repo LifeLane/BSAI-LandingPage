@@ -3,9 +3,8 @@
 
 import { Button } from '@/components/ui/button';
 import AnimatedElement from './AnimatedElement';
-import HeroParticleAnimation from './HeroParticleAnimation';
 import TerminalCard from './TerminalCard';
-import { Gift, ShieldCheck, BarChartBig, Users, Send, Brain, Sparkles, Terminal, ChevronRight } from 'lucide-react';
+import { Gift, ShieldCheck, BarChartBig, Users, Send, Brain, Sparkles, Terminal } from 'lucide-react'; // Removed ChevronRight as it's not used here
 
 const uprisingBenefits = [
   { icon: Sparkles, text: "Shadow Genesis NFTs" },
@@ -18,9 +17,7 @@ const uprisingBenefits = [
 export default function UprisingCtaSection() {
   return (
     <section id="uprising-cta" className="relative py-10 md:py-12 overflow-hidden">
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
-        <HeroParticleAnimation />
-      </div>
+      {/* Removed local HeroParticleAnimation */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedElement className="max-w-xl mx-auto">
           <TerminalCard
@@ -69,4 +66,3 @@ export default function UprisingCtaSection() {
     </section>
   );
 }
-
