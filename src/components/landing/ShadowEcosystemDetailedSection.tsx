@@ -1,50 +1,47 @@
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import AnimatedElement from './AnimatedElement';
 import HeroParticleAnimation from './HeroParticleAnimation';
-import { Brain, Eye, Bot, LinkIcon as LinkIconLucide, Zap, RadioTower } from 'lucide-react'; 
+import TerminalCard from './TerminalCard';
+import { Brain, Eye, Bot, Link as LinkIconLucide, Zap, RadioTower, Database } from 'lucide-react';
 
 const ecosystemItems = [
-  { icon: Brain, title: 'Shadow', description: 'The central quantum mind of the system' },
-  { icon: Eye, title: 'ShadowVision', description: 'Your AI market terminal: signals, confidence, timing' },
-  { icon: Bot, title: 'ShadowAgents', description: 'Bots that move before the crowd' },
-  { icon: LinkIconLucide, title: 'ShadowLink', description: 'Liquidity rerouting across chains by real-time analysis' },
-  { icon: Zap, title: 'ShadowVaults', description: 'AI-yield machines that evolve with volatility' },
-  { icon: RadioTower, title: 'ShadowEcho', description: 'Alpha signal stream encrypted for connected wallets only' },
+  { icon: Brain, title: 'Shadow', description: 'The quantum brain watching every chain' },
+  { icon: Eye, title: 'ShadowVision', description: 'Real-time signal interface for traders' },
+  { icon: Bot, title: 'ShadowAgents', description: 'Deployable AIs that monitor, scan, and react to threats' },
+  { icon: LinkIconLucide, title: 'ShadowLink', description: 'Smart routing of liquidity across chains with predictive AI' },
+  { icon: Zap, title: 'ShadowVaults', description: 'Yield strategies that evolve by learning from the market' },
+  { icon: RadioTower, title: 'ShadowEcho', description: 'Encrypted alpha stream delivered only to synced minds' },
 ];
 
 export default function ShadowEcosystemDetailedSection() {
   return (
-    <section id="shadow-ecosystem" className="relative py-16 md:py-24 bg-background overflow-hidden">
+    <section id="shadow-ecosystem" className="relative py-10 md:py-12 bg-background overflow-hidden">
       <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
         <HeroParticleAnimation />
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <AnimatedElement className="text-center mb-10 md:mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-headline text-foreground">
-            🧬 The <span className="text-primary">Shadow Ecosystem</span>
+        <AnimatedElement className="text-center mb-8 md:mb-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-terminal-heading text-primary">
+            &gt; 🧬 THE SHADOW ECOSYSTEM
           </h2>
         </AnimatedElement>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 glow-list">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {ecosystemItems.map((item, index) => (
-            <AnimatedElement as="li" key={index} delay={`delay-${index * 100}`} className="list-none">
-              <Card className="h-full shadow-lg hover:shadow-primary/40 transition-all duration-300 bg-card/70 backdrop-blur-sm border border-border/50 transform hover:-translate-y-1.5 hover:scale-[1.03]">
-                <CardHeader className="pb-3">
-                  <div className="flex items-center space-x-3">
-                    <item.icon className="h-8 w-8 md:h-9 md:w-9 text-primary" />
-                    <CardTitle className="text-2xl sm:text-3xl font-headline text-foreground group-hover:text-primary transition-colors">{item.title}</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <p className="text-base sm:text-lg text-muted-foreground font-body group-hover:text-foreground/90 transition-colors">{item.description}</p>
-                </CardContent>
-              </Card>
+            <AnimatedElement key={index} delay={`delay-${index * 100}`} className="h-full flex">
+              <TerminalCard
+                title={item.title.toUpperCase()}
+                titleIcon={<item.icon className="h-4 w-4 text-primary/80" />}
+                className="w-full h-full group transition-all duration-300 hover:shadow-neon-accent hover:border-accent/80"
+                contentClassName="text-sm md:text-base"
+              >
+                <p className="text-foreground/80 font-terminal-body">{item.description}</p>
+              </TerminalCard>
             </AnimatedElement>
           ))}
-        </ul>
-         <AnimatedElement delay="delay-600" className="mt-12 md:mt-16 text-center">
-            <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground font-body">
-                Stake <strong className="text-primary font-semibold">BSAI</strong> to unlock the full force of this ecosystem.
+        </div>
+         <AnimatedElement delay="delay-600" className="mt-8 md:mt-10 text-center">
+            <p className="text-base sm:text-lg md:text-xl text-foreground/80 font-terminal-body">
+                Stake <strong className="text-primary font-bold shadow-neon-primary px-1">BSAI</strong> to unlock the full force of this ecosystem.
             </p>
         </AnimatedElement>
       </div>

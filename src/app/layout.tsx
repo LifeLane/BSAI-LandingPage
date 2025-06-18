@@ -1,11 +1,10 @@
 
 import type { Metadata } from 'next';
-import { Inter, Space_Grotesk, Space_Mono } from 'next/font/google';
+import { Space_Grotesk, Space_Mono, Courier_Prime, Share_Tech_Mono } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from '@/components/ThemeProvider';
-// Removed import of StickyHeader from here
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -19,16 +18,21 @@ const space_mono = Space_Mono({
   weight: ['400', '700'],
 });
 
-const inter = Inter({
+const courier_prime = Courier_Prime({
   subsets: ['latin'],
-  variable: '--font-inter',
-  weight: ['400', '500', '700'],
+  variable: '--font-courier-prime',
+  weight: ['400', '700'],
 });
 
+const share_tech_mono = Share_Tech_Mono({
+  subsets: ['latin'],
+  variable: '--font-share-tech-mono',
+  weight: ['400'],
+});
 
 export const metadata: Metadata = {
-  title: 'QuantumTrader: AI Trading Analyst',
-  description: "The world's first AI trade analyst powered by quantum computing. See market moves before they happen.",
+  title: 'Shadow: Quantum AI Trading',
+  description: "Shadow: Where Quantum Intelligence Hunts Market Profits. Evolved, not built.",
 };
 
 export default function RootLayout({
@@ -37,15 +41,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${space_grotesk.variable} ${space_mono.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${space_grotesk.variable} ${space_mono.variable} ${courier_prime.variable} ${share_tech_mono.variable}`} suppressHydrationWarning>
       <head>
-        {/* Removed direct Google Font links, next/font handles this */}
-        {/* Add Three.js CDN Script */}
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" strategy="beforeInteractive" />
       </head>
-      <body className="font-body antialiased bg-background text-foreground"> {/* pt-12 was already removed */}
-        {/* StickyHeader component removed from here */}
-        <ThemeProvider defaultTheme="light" storageKey="quantumtrader-theme">
+      <body className="font-terminal-body antialiased bg-background text-foreground">
+        <ThemeProvider defaultTheme="dark" storageKey="shadow-theme">
           {children}
           <Toaster />
         </ThemeProvider>

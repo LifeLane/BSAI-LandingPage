@@ -1,11 +1,11 @@
 
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import AnimatedElement from './AnimatedElement';
 import HeroParticleAnimation from './HeroParticleAnimation';
+import TerminalCard from './TerminalCard';
 import { Button } from '@/components/ui/button';
-import { ListChecks, Coins, ShoppingCart, BarChartHorizontalBig } from 'lucide-react';
+import { ListChecks, Coins, ShoppingCart, BarChartHorizontalBig, Database, Terminal } from 'lucide-react';
 import { useEffect, useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -19,15 +19,14 @@ const bsaiUses = [
 ];
 
 const tokenomicsDetails = [
-  { label: "Genesis Offering", value: "20%", percentage: 20, color: "hsl(var(--chart-1))" },
-  { label: "Ecosystem Growth", value: "25%", percentage: 25, color: "hsl(var(--chart-2))" },
-  { label: "Staking Rewards", value: "20%", percentage: 20, color: "hsl(var(--chart-3))" },
-  { label: "Labs & Dev", value: "15%", percentage: 15, color: "hsl(var(--chart-4))" },
-  { label: "Shadow Reserve", value: "10%", percentage: 10, color: "hsl(var(--chart-5))" },
-  { label: "Advisors", value: "5%", percentage: 5, color: "hsl(var(--primary))" },
-  { label: "Liquidity", value: "5%", percentage: 5, color: "hsl(var(--accent))" },
+  { label: "Genesis Offering", value: "20%", percentage: 20, color: "hsl(var(--chart-1))" }, // Cyan
+  { label: "Ecosystem Growth", value: "25%", percentage: 25, color: "hsl(var(--chart-2))" }, // Magenta
+  { label: "Staking Rewards", value: "20%", percentage: 20, color: "hsl(var(--chart-3))" }, // Green
+  { label: "Labs & Dev", value: "15%", percentage: 15, color: "hsl(var(--chart-4))" },      // Yellow
+  { label: "Shadow Reserve", value: "10%", percentage: 10, color: "hsl(var(--chart-5))" },  // Blue
+  { label: "Advisors", value: "5%", percentage: 5, color: "hsl(var(--primary) / 0.7)" }, // Dimmer Cyan
+  { label: "Liquidity", value: "5%", percentage: 5, color: "hsl(var(--accent) / 0.7)" },  // Dimmer Magenta
 ];
-
 
 export default function TokenomicsSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -47,7 +46,7 @@ export default function TokenomicsSection() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top center+=100", 
+        start: "top center+=150", 
         toggleActions: "play none none none", 
       }
     });
@@ -57,8 +56,8 @@ export default function TokenomicsSection() {
       const supplyObject = { value: 0 };
       tl.to(supplyObject, {
         value: supplyTarget,
-        duration: 1.5, 
-        ease: "power1.out",
+        duration: 2, 
+        ease: "power2.out",
         onUpdate: () => {
           if (maxSupplyRef.current) {
             maxSupplyRef.current.textContent = Math.round(supplyObject.value).toLocaleString();
@@ -76,14 +75,14 @@ export default function TokenomicsSection() {
         if (bar) {
           tl.fromTo(bar, 
             { width: '0%' }, 
-            { width: `${data.percentage}%`, duration: 1, ease: "power2.out" } 
-          , `start+=${index * 0.1}`); 
+            { width: `${data.percentage}%`, duration: 1.2, ease: "power2.out" } 
+          , `start+=${index * 0.15}`); 
         }
         if (percentageText) {
            tl.fromTo(percentageText,
-            { opacity: 0, y:5 },
-            { opacity: 1, y: 0, duration: 0.4, ease: "power1.out" }
-          , `start+=${index * 0.1 + 0.3}`); 
+            { opacity: 0, y: 8 },
+            { opacity: 1, y: 0, duration: 0.5, ease: "power1.out" }
+          , `start+=${index * 0.15 + 0.4}`); 
         }
       }
     });
@@ -95,89 +94,90 @@ export default function TokenomicsSection() {
   }, []); 
 
   return (
-    <section id="tokenomics" className="relative py-16 md:py-24 overflow-hidden w-full" ref={sectionRef}>
+    <section id="tokenomics" className="relative py-12 md:py-16 overflow-hidden w-full" ref={sectionRef}>
       <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
         <HeroParticleAnimation />
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <AnimatedElement className="text-center mb-10 md:mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-headline text-foreground">
-            🧬 BSAI — The <span className="text-primary">Neural Fuel</span>
+        <AnimatedElement className="text-center mb-8 md:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-terminal-heading text-primary">
+            &gt; BSAI — THE NEURAL FUEL
           </h2>
-          <CardDescription className="mt-4 text-xl sm:text-2xl text-muted-foreground font-body max-w-2xl mx-auto">
+          <p className="mt-3 text-lg sm:text-xl text-foreground/80 font-terminal-body max-w-xl mx-auto">
             This isn’t governance. This is communion. BSAI is how you sync with Shadow.
-          </CardDescription>
+          </p>
         </AnimatedElement>
         
-        <div className="grid grid-cols-1 gap-8 md:gap-12 items-start">
-          <AnimatedElement delay="delay-100">
-            <Card className="w-full h-full shadow-xl bg-card/70 backdrop-blur-sm border border-border/50 hover:border-primary/50 transform transition-all duration-300 hover:-translate-y-1.5">
-              <CardHeader className="pb-4">
-                <div className="flex items-center space-x-3">
-                  <ListChecks className="h-8 w-8 md:h-9 md:w-9 text-primary" />
-                  <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-headline text-foreground">Use BSAI to:</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-2 pl-8 pr-4 sm:pr-6">
-                <ul className="list-disc list-outside space-y-2 text-lg sm:text-xl text-muted-foreground marker:text-primary">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8 items-start">
+          <div className="lg:col-span-2">
+            <AnimatedElement delay="delay-100">
+              <TerminalCard
+                title="BSAI_UTILITY"
+                titleIcon={<ListChecks className="h-4 w-4 text-primary/80" />}
+                className="w-full h-full"
+                contentClassName="text-sm md:text-base"
+              >
+                <ul className="space-y-2.5 text-foreground/80 font-terminal-body">
                   {bsaiUses.map((use, index) => (
-                    <li key={index} className="group hover:text-foreground transition-colors">{use}</li>
+                    <li key={index} className="group hover:text-primary transition-colors flex items-center">
+                       <span className="text-primary mr-2 group-hover:text-accent-green">&gt;</span> {use}
+                    </li>
                   ))}
                 </ul>
-              </CardContent>
-            </Card>
-          </AnimatedElement>
+              </TerminalCard>
+            </AnimatedElement>
+          </div>
 
-          <AnimatedElement>
-            <Card className="w-full h-full shadow-xl bg-card/70 backdrop-blur-sm border border-border/50 hover:border-primary/50 transform transition-all duration-300 hover:-translate-y-1.5">
-              <CardHeader className="pb-4">
-                <div className="flex items-center space-x-3">
-                   <BarChartHorizontalBig className="h-8 w-8 md:h-9 md:w-9 text-primary" />
-                   <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-headline text-foreground">Token Allocation</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="px-4 sm:px-6 py-6 space-y-5">
-                <div className="text-center mb-4">
-                  <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-muted-foreground">
+          <div className="lg:col-span-3">
+            <AnimatedElement>
+              <TerminalCard
+                title="TOKEN_ALLOCATION"
+                titleIcon={<BarChartHorizontalBig className="h-4 w-4 text-primary/80" />}
+                className="w-full h-full"
+                contentClassName="text-sm md:text-base"
+                footerContent="Launch Type: Public Genesis Offering"
+              >
+                <div className="text-center mb-5">
+                  <p className="text-xl sm:text-2xl font-semibold text-foreground/80 font-terminal-body">
                     Supply: <span ref={maxSupplyRef} className="text-primary font-bold">0</span> BSAI (hard cap)
                   </p>
-                  <p className="text-lg sm:text-xl text-muted-foreground">Launch Type: Public Genesis Offering</p>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-2.5">
                   {tokenomicsDetails.map((item, index) => (
                     <div 
                       key={item.label} 
-                      className="flex flex-col sm:flex-row items-start sm:items-center hover:bg-muted/30 px-1.5 py-1.5 rounded-md transition-colors duration-150"
+                      className="flex flex-col sm:flex-row items-start sm:items-center hover:bg-primary/5 px-1.5 py-1 rounded-sm transition-colors duration-150 font-terminal-code"
                       ref={addToRefs} 
                     >
-                      <span className="w-full sm:w-2/5 text-base sm:text-lg text-muted-foreground sm:text-right sm:pr-2 mb-0.5 sm:mb-0">{item.label}:</span>
+                      <span className="w-full sm:w-2/5 text-xs sm:text-sm text-foreground/70 sm:text-right sm:pr-2 mb-0.5 sm:mb-0">{item.label}:</span>
                       <div className="w-full sm:w-3/5 flex items-center">
-                        <div className="flex-grow h-3.5 bg-muted rounded-sm overflow-hidden relative mr-2">
+                        <div className="flex-grow h-3 bg-muted/30 rounded-sm overflow-hidden relative mr-2 border border-primary/20">
                           <div 
                             className="token-bar-fill absolute top-0 left-0 h-full rounded-sm"
                             style={{ 
                               width: '0%', 
-                              backgroundColor: item.color 
+                              backgroundColor: item.color,
+                              boxShadow: `0 0 3px ${item.color}`
                             }} 
                           ></div>
                         </div>
-                        <span className="token-percentage-text text-base sm:text-lg font-semibold text-foreground w-12 text-left opacity-0">
+                        <span className="token-percentage-text text-xs sm:text-sm font-semibold text-foreground w-12 text-left opacity-0">
                           {item.value}
                         </span>
                       </div>
                     </div>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-          </AnimatedElement>
+              </TerminalCard>
+            </AnimatedElement>
+          </div>
         </div>
-         <AnimatedElement className="mt-12 md:mt-16 text-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <Button size="lg" className="w-full sm:w-auto px-10 py-7 text-xl sm:text-2xl font-headline bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-lg hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300 glow-button">
-                <ShoppingCart className="mr-2.5 h-6 w-6" /> 🎯 Join the Sale
+         <AnimatedElement className="mt-10 md:mt-12 text-center space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:gap-5">
+            <Button variant="default" size="lg" className="w-full sm:w-auto px-8 py-3 text-sm sm:text-base">
+                <ShoppingCart className="mr-2 h-4 w-4" /> JOIN THE SALE
             </Button>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto px-10 py-7 text-xl sm:text-2xl font-headline text-foreground hover:bg-primary/10 hover:border-primary">
-                <Coins className="mr-2.5 h-6 w-6" /> 🧠 View Tokenomics
+            <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 py-3 text-sm sm:text-base">
+                <Database className="mr-2 h-4 w-4" /> VIEW TOKENOMICS
             </Button>
         </AnimatedElement>
       </div>

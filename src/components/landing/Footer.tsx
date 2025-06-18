@@ -1,11 +1,11 @@
 
 import Link from 'next/link';
-import { Sparkles } from 'lucide-react'; // Assuming Sparkles remains the logo icon
+import { Sparkles, Terminal } from 'lucide-react';
 import HeroParticleAnimation from './HeroParticleAnimation';
-import { FaTwitter, FaTelegramPlane, FaDiscord } from 'react-icons/fa'; // Example social icons
+import { FaTwitter, FaTelegramPlane, FaDiscord } from 'react-icons/fa';
 
 const mainNavLinks = [
-  { name: 'The Origin', href: '#origin-story-mission-vision' },
+  { name: 'Origin', href: '#origin-story-mission-vision' },
   { name: 'Ecosystem', href: '#shadow-ecosystem' },
   { name: 'Roadmap', href: '#roadmap' },
   { name: 'Apply', href: '#early-access-cta' },
@@ -19,37 +19,37 @@ const socialIcons = [
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-primary/40 shadow-[0_-4px_12px_-3px_hsl(var(--primary)/0.3)] text-card-foreground overflow-hidden py-8 md:py-12 footer-glow">
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
+    <footer className="relative border-t border-primary/50 shadow-[0_-5px_15px_-5px_hsl(var(--primary)/0.4)] text-foreground bg-background/70 backdrop-blur-sm overflow-hidden py-6 md:py-8">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-10">
         <HeroParticleAnimation />
       </div>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <div className="mb-6">
-          <Link href="/" className="inline-flex items-center space-x-2 mb-3">
-            <Sparkles className="h-7 w-7 text-primary" />
-            <span className="text-xl font-bold font-headline">Shadow</span>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center font-terminal-body">
+        <div className="mb-5">
+          <Link href="/" className="inline-flex items-center space-x-1.5 mb-2 group">
+            <Sparkles className="h-6 w-6 text-primary group-hover:text-accent transition-colors" />
+            <span className="text-lg font-bold font-terminal-heading text-primary group-hover:text-accent transition-colors">Shadow</span>
           </Link>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs text-foreground/70">
             &copy; {new Date().getFullYear()} BlockShadow — Autonomous Intelligence for the Decentralized Era.
           </p>
-          <p className="text-xs text-muted-foreground/80 italic mt-1">
+          <p className="text-xs text-primary/80 italic mt-0.5">
             “You don’t use Shadow. You sync with him.”
           </p>
         </div>
 
-        <nav className="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-6">
+        <nav className="flex flex-wrap justify-center gap-x-3 gap-y-1.5 mb-5">
           {mainNavLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="text-xs text-foreground/70 hover:text-primary hover:underline transition-colors uppercase"
             >
               {link.name}
             </Link>
           ))}
         </nav>
 
-        <div className="flex justify-center space-x-4">
+        <div className="flex justify-center space-x-3.5">
           {socialIcons.map((social) => (
             <Link
               key={social.name}
@@ -57,9 +57,9 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={social.name}
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-foreground/60 hover:text-primary transition-colors"
             >
-              <social.icon className="h-5 w-5" />
+              <social.icon className="h-4 w-4" />
             </Link>
           ))}
         </div>
