@@ -18,7 +18,7 @@ export default function Hero() {
     const email = formData.get('hero-email');
     const telegram = formData.get('hero-telegram');
     const wallet = formData.get('hero-wallet');
-    
+
     toast({
       title: "> ACCESS REQUEST LOGGED",
       description: (
@@ -36,9 +36,9 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative bg-transparent pt-10 pb-10 md:pt-16 md:pb-12 overflow-hidden flex flex-col items-center justify-center"
+      className="relative bg-transparent pt-10 pb-10 md:pt-16 md:pb-12 overflow-hidden flex flex-col items-center justify-center" // bg-transparent
     >
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-100">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-100"> {/* Particle container at full opacity */}
         <HeroParticleAnimation />
       </div>
 
@@ -58,7 +58,7 @@ export default function Hero() {
             </span>
           </h1>
         </AnimatedElement>
-        
+
         <AnimatedElement className="mt-6 md:mt-8 w-full max-w-md" delay="delay-300" animationClass="animate-fade-in-up">
           <Button
             variant="outline"

@@ -22,7 +22,8 @@ export default function Header() {
 
   return (
     <header className={cn(
-      "sticky top-0 w-full z-30 bg-transparent" 
+      "sticky top-0 w-full z-30",
+      theme === 'dark' ? 'bg-transparent' : 'bg-transparent' // Always transparent
     )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -70,7 +71,7 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div className={cn(
           "md:hidden shadow-lg border-t border-primary/30",
-          theme === 'dark' ? 'bg-[hsl(0,0%,5%)]/95 backdrop-blur-md' : 'bg-background/95 backdrop-blur-md' 
+          theme === 'dark' ? 'bg-[hsl(0,0%,5%)]/95 backdrop-blur-md' : 'bg-background/95 backdrop-blur-md'
         )}>
           <nav className="flex flex-col space-y-1 p-4">
             {navigationItems.map((item) => (
@@ -102,4 +103,4 @@ export default function Header() {
     </header>
   );
 }
-    
+
