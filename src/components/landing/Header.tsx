@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <header className={cn(
-      "sticky top-0 w-full z-30 bg-transparent backdrop-blur-sm border-b border-primary/30",
+      "sticky top-0 w-full z-30 bg-transparent border-b border-primary/30", // Removed backdrop-blur-sm
     )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -40,9 +40,9 @@ export default function Header() {
               </Link>
             ))}
             <Button
-              variant="outline" 
+              variant="outline"
               size="sm"
-              className="ml-3" 
+              className="ml-3"
               onClick={() => {
                 const earlyAccessSection = document.getElementById('early-access-cta');
                 if (earlyAccessSection) {
@@ -66,7 +66,7 @@ export default function Header() {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-md shadow-lg border-t border-primary/30">
+        <div className="md:hidden bg-background/95 backdrop-blur-md shadow-lg border-t border-primary/30"> {/* Mobile menu retains its style for now */}
           <nav className="flex flex-col space-y-1 p-4">
             {navigationItems.map((item) => (
               <Link
@@ -79,7 +79,7 @@ export default function Header() {
               </Link>
             ))}
             <Button
-              variant="outline" 
+              variant="outline"
               className="w-full mt-3 text-sm"
               onClick={() => {
                 setIsMobileMenuOpen(false);
