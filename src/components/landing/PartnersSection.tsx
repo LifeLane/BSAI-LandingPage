@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import AnimatedElement from './AnimatedElement';
 import gsap from 'gsap';
 import SplitType from 'split-type';
-import HeroParticleAnimation from './HeroParticleAnimation'; // Added import
+import HeroParticleAnimation from './HeroParticleAnimation';
 
 const hooks = [
   "🎯 PUBLIC TOKEN SALE BEGINS SOON",
@@ -27,46 +27,63 @@ export default function PartnersSection() {
     const cycleHook = () => {
       setCurrentHookIndex((prevIndex) => (prevIndex + 1) % hooks.length);
     };
-    const intervalId = setInterval(cycleHook, HOOK_DISPLAY_DURATION + ANIMATION_DURATION);
+    const intervalId = setInterval(cycleHook, HOOK_DISPLAY_DURATION + ANIMATION_DURATION + 500); // Allow time for animation
     return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
     if (h2Ref.current) {
-      if (splitRef.current) {
-        splitRef.current.revert(); 
+      // Kill any ongoing animations on the element or its characters
+      gsap.killTweensOf(h2Ref.current);
+      if (splitRef.current && splitRef.current.chars) {
+        gsap.killTweensOf(splitRef.current.chars);
       }
-      
-      h2Ref.current.textContent = hooks[currentHookIndex]; 
 
-      splitRef.current = new SplitType(h2Ref.current, { types: 'chars,words' });
-      const chars = splitRef.current.chars;
-
-      if (chars && chars.length > 0) {
-        gsap.from(chars, {
-          duration: ANIMATION_DURATION / 1000,
-          textContent: () => "!<>-_\\/[]{}—=+*^?#$()".charAt(Math.floor(Math.random() * "!<>-_\\/[]{}—=+*^?#$()".length)),
-          opacity: 0,
-          filter: 'blur(2px)',
-          ease: 'power2.inOut',
-          stagger: {
-            each: 0.04,
-            from: 'random',
-          },
-          onComplete: () => {
-            if (h2Ref.current) {
-              h2Ref.current.textContent = hooks[currentHookIndex];
-            }
-          }
-        });
-      }
-    }
-     return () => {
+      // Revert previous SplitType instance if it exists
       if (splitRef.current) {
         splitRef.current.revert();
       }
+      
+      // Set the text content directly before splitting
+      h2Ref.current.textContent = hooks[currentHookIndex]; 
+      
+      // Apply new SplitType
+      splitRef.current = new SplitType(h2Ref.current, { types: 'chars' });
+      const chars = splitRef.current.chars;
+
+      if (chars && chars.length > 0) {
+        gsap.fromTo(chars,
+          { // From state
+            opacity: 0,
+            filter: 'blur(3px)',
+            y: 10, 
+          },
+          { // To state
+            opacity: 1,
+            filter: 'blur(0px)',
+            y: 0,
+            duration: ANIMATION_DURATION / 1000,
+            ease: 'power2.out',
+            stagger: {
+              each: 0.04,
+              from: 'random',
+            },
+          }
+        );
+      }
+    }
+
+     return () => {
+      // Cleanup GSAP animations and SplitType
+      if (splitRef.current) {
+        if (splitRef.current.chars) { // Check if chars exist before trying to kill tweens
+            gsap.killTweensOf(splitRef.current.chars);
+        }
+        splitRef.current.revert();
+        splitRef.current = null;
+      }
       if (h2Ref.current) {
-        gsap.killTweensOf(h2Ref.current.childNodes); 
+        gsap.killTweensOf(h2Ref.current);
       }
     };
   }, [currentHookIndex]);
@@ -87,7 +104,7 @@ export default function PartnersSection() {
             aria-live="polite"
             aria-atomic="true"
           >
-            {hooks[currentHookIndex]}
+            {/* Content set by useEffect */}
           </h2>
         </div>
       </section>

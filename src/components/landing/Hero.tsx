@@ -24,7 +24,10 @@ export default function Hero() {
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-background p-2 font-terminal-code">
           <code className="text-accent-green">
-            {`User: ${telegram || 'anonymous'}\nEmail: ${email}\nWallet: ${wallet ? wallet.toString().substring(0,10) + '...' : 'not_provided'}\nStatus: Marked_for_Shadow_Selection`}
+            {`User: ${telegram || 'anonymous'}
+Email: ${email}
+Wallet: ${wallet ? wallet.toString().substring(0,10) + '...' : 'not_provided'}
+Status: Marked_for_Shadow_Selection`}
           </code>
         </pre>
       ),
@@ -35,11 +38,9 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative bg-transparent pt-10 pb-10 md:pt-16 md:pb-12 overflow-hidden flex flex-col items-center justify-center">
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-50"> {/* Increased opacity */}
         <HeroParticleAnimation />
       </div>
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl animate-quantum-orb-primary opacity-30 z-0"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/5 rounded-full filter blur-3xl animate-quantum-orb-accent opacity-30 z-0"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
         <AnimatedElement className="w-full" animationClass="animate-fade-in-up">
