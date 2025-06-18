@@ -5,7 +5,6 @@ import Script from 'next/script';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from '@/components/ThemeProvider';
-// Removed HeroParticleAnimation import
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -42,13 +41,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${space_grotesk.variable} ${space_mono.variable} ${courier_prime.variable} ${share_tech_mono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${space_grotesk.variable} ${space_mono.variable} ${courier_prime.variable} ${share_tech_mono.variable} dark`} suppressHydrationWarning>
       <head>
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" strategy="beforeInteractive" />
       </head>
-      <body className="font-terminal-body antialiased text-foreground"> {/* Removed bg-background */}
-        <ThemeProvider defaultTheme="dark" storageKey="shadow-theme">
-          {/* Removed HeroParticleAnimation from here */}
+      <body className="font-terminal-body antialiased text-foreground">
+        <ThemeProvider> {/* No props needed anymore */}
           {children}
           <Toaster />
         </ThemeProvider>

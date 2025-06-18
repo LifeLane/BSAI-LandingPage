@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Menu, X, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
-import { ThemeToggle } from '@/components/ThemeToggle';
+// import { ThemeToggle } from '@/components/ThemeToggle'; // Removed
 import { useTheme } from '@/components/ThemeProvider';
 
 const navigationItems = [
@@ -18,12 +18,12 @@ const navigationItems = [
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { theme } = useTheme();
+  const { theme } = useTheme(); // Will always be 'dark'
 
   return (
     <header className={cn(
       "sticky top-0 w-full z-30",
-      theme === 'dark' ? 'bg-transparent' : 'bg-transparent' // Always transparent
+      theme === 'dark' ? 'bg-[hsl(0,0%,5%)]' : 'bg-transparent' // Explicit dark background
     )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -55,11 +55,11 @@ export default function Header() {
             >
               APPLY FOR ACCESS
             </Button>
-            <ThemeToggle className="ml-2 text-foreground/80 hover:text-primary" />
+            {/* <ThemeToggle className="ml-2 text-foreground/80 hover:text-primary" /> Removed */}
           </nav>
 
           <div className="md:hidden flex items-center">
-            <ThemeToggle className="mr-2 text-foreground/80 hover:text-primary" />
+            {/* <ThemeToggle className="mr-2 text-foreground/80 hover:text-primary" /> Removed */}
             <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-foreground/80 hover:text-primary">
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               <span className="sr-only">Toggle menu</span>
@@ -103,4 +103,3 @@ export default function Header() {
     </header>
   );
 }
-
