@@ -7,7 +7,7 @@ import { Menu, X, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 // import { ThemeToggle } from '@/components/ThemeToggle'; // Removed
-import { useTheme } from '@/components/ThemeProvider';
+// import { useTheme } from '@/components/ThemeProvider'; // No longer needed for conditional styling
 
 const navigationItems = [
   { name: 'The Origin', href: '#origin-story-mission-vision' },
@@ -18,12 +18,12 @@ const navigationItems = [
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { theme } = useTheme(); // Will always be 'dark'
+  // const { theme } = useTheme(); // Theme is now fixed to light
 
   return (
     <header className={cn(
       "sticky top-0 w-full z-30",
-      theme === 'dark' ? 'bg-[hsl(0,0%,5%)]' : 'bg-transparent' // Explicit dark background
+      'bg-transparent' // Always transparent as light theme is default
     )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -55,11 +55,9 @@ export default function Header() {
             >
               APPLY FOR ACCESS
             </Button>
-            {/* <ThemeToggle className="ml-2 text-foreground/80 hover:text-primary" /> Removed */}
           </nav>
 
           <div className="md:hidden flex items-center">
-            {/* <ThemeToggle className="mr-2 text-foreground/80 hover:text-primary" /> Removed */}
             <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-foreground/80 hover:text-primary">
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               <span className="sr-only">Toggle menu</span>
@@ -71,7 +69,7 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div className={cn(
           "md:hidden shadow-lg border-t border-primary/30",
-          theme === 'dark' ? 'bg-[hsl(0,0%,5%)]/95 backdrop-blur-md' : 'bg-background/95 backdrop-blur-md'
+          'bg-background/95 backdrop-blur-md' // Background for mobile menu (will be light)
         )}>
           <nav className="flex flex-col space-y-1 p-4">
             {navigationItems.map((item) => (

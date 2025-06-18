@@ -41,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${space_grotesk.variable} ${space_mono.variable} ${courier_prime.variable} ${share_tech_mono.variable} dark`} suppressHydrationWarning>
+    <html lang="en" className={`${space_grotesk.variable} ${space_mono.variable} ${courier_prime.variable} ${share_tech_mono.variable}`} suppressHydrationWarning>
       <head>
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" strategy="beforeInteractive" />
       </head>

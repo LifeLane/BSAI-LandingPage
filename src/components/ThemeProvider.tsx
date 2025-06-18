@@ -4,7 +4,7 @@
 import type React from 'react';
 import { createContext, useContext, useEffect } from 'react';
 
-type Theme = "dark"; // Only dark theme is supported
+type Theme = "light"; // Only light theme is supported
 
 interface ThemeProviderProps {
   children: React.ReactNode;
@@ -12,11 +12,10 @@ interface ThemeProviderProps {
 
 interface ThemeProviderState {
   theme: Theme;
-  // setTheme function is removed as theme is fixed
 }
 
 const initialState: ThemeProviderState = {
-  theme: "dark", 
+  theme: "light", 
 };
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
@@ -24,17 +23,15 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 export function ThemeProvider({
   children,
 }: ThemeProviderProps) {
-  const theme: Theme = "dark"; // Hardcode theme to dark
+  const theme: Theme = "light"; // Hardcode theme to light
 
   useEffect(() => {
     const root = window.document.documentElement;
     
-    // Always apply the dark theme class
-    root.classList.remove("light"); // Remove light if it was somehow set
-    root.classList.add("dark"); 
+    // Always apply the light theme class
+    root.classList.remove("dark"); // Remove dark if it was somehow set
+    root.classList.add("light"); 
     
-    // Remove localStorage interaction as theme is fixed
-    // localStorage.setItem(storageKey, theme); 
   }, []); // Empty dependency array, runs once on mount
 
   const value = {
