@@ -46,7 +46,7 @@ export default function RootLayout({
       <head>
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" strategy="beforeInteractive" />
       </head>
-      <body className="font-terminal-body antialiased bg-background text-foreground">
+      <body className="font-terminal-body antialiased text-foreground"> {/* Removed bg-background */}
         <ThemeProvider defaultTheme="dark" storageKey="shadow-theme">
           <HeroParticleAnimation />
           {children}
