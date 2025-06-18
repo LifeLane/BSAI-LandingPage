@@ -20,12 +20,12 @@ export default function Header() {
 
   return (
     <header className={cn(
-      "w-full z-30 bg-background/80 backdrop-blur-sm shadow-md border-b border-primary/30",
+      "w-full z-30 bg-background/50 backdrop-blur-sm shadow-md border-b border-primary/30", // Changed bg-background/80 to bg-background/50
     )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16"> {/* Reduced height */}
+        <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center space-x-2 group" id="header-logo-container">
-            <Sparkles className="h-7 w-7 text-primary group-hover:text-accent transition-colors duration-300" id="header-logo-icon" /> {/* Reduced size */}
+            <Sparkles className="h-7 w-7 text-primary group-hover:text-accent transition-colors duration-300" id="header-logo-icon" />
             <span className="text-2xl font-terminal-heading font-bold text-primary group-hover:text-accent transition-colors duration-300" id="header-logo-text">Shadow</span>
           </Link>
 
@@ -40,9 +40,9 @@ export default function Header() {
               </Link>
             ))}
             <Button
-              variant="outline" // Changed to outline to match new theme
+              variant="outline" 
               size="sm"
-              className="ml-3" // Adjusted margin
+              className="ml-3" 
               onClick={() => {
                 const earlyAccessSection = document.getElementById('early-access-cta');
                 if (earlyAccessSection) {
@@ -79,7 +79,7 @@ export default function Header() {
               </Link>
             ))}
             <Button
-              variant="outline" // Changed to outline
+              variant="outline" 
               className="w-full mt-3 text-sm"
               onClick={() => {
                 setIsMobileMenuOpen(false);
