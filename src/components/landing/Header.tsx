@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <header className={cn(
-      "sticky top-0 w-full z-30 bg-transparent border-b border-primary/30", // Removed backdrop-blur-sm
+      "sticky top-0 w-full z-30 bg-transparent", // Removed border-b border-primary/30
     )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -66,7 +66,7 @@ export default function Header() {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-md shadow-lg border-t border-primary/30"> {/* Mobile menu retains its style for now */}
+        <div className="md:hidden bg-background/95 backdrop-blur-md shadow-lg border-t border-primary/30"> {/* Mobile menu retains its style for clarity */}
           <nav className="flex flex-col space-y-1 p-4">
             {navigationItems.map((item) => (
               <Link
@@ -97,3 +97,4 @@ export default function Header() {
     </header>
   );
 }
+    
