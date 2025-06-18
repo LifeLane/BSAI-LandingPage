@@ -2,19 +2,43 @@
 "use client";
 
 import type React from 'react';
-import { useEffect, useRef } from 'react';
-import { useTheme } from '@/components/ThemeProvider'; // Ensure useTheme is imported
+import { useEffect, useRef, useState } from 'react'; // Added useState
+import { useTheme } from '@/components/ThemeProvider'; 
 
 // THREE will be available globally from the CDN script in layout.tsx
 
 const HeroParticleAnimation: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { theme } = useTheme(); // Get current theme
+  const { theme } = useTheme();
+  const [threeReady, setThreeReady] = useState(false); // State to track if THREE is loaded
+
+  // Effect to check for THREE library readiness
+  useEffect(() => {
+    if (typeof THREE !== 'undefined') {
+      setThreeReady(true);
+    } else {
+      // Fallback: check again after a short delay if THREE wasn't immediately ready
+      // This helps if the script loads slightly after the initial component mount.
+      const timeoutId = setTimeout(() => {
+        if (typeof THREE !== 'undefined') {
+          setThreeReady(true);
+        } else {
+          console.error('Three.js still not loaded after delay. Ensure the CDN script is correctly placed in layout.tsx and is loading.');
+        }
+      }, 100); // Check after 100ms
+      return () => clearTimeout(timeoutId);
+    }
+  }, []); // Runs once on mount to check for THREE
+
 
   useEffect(() => {
-    // Ensure THREE is loaded
+    if (!threeReady) { 
+      return;
+    }
+    
     if (typeof THREE === 'undefined') {
-      console.error('Three.js has not been loaded. Ensure the CDN script is in layout.tsx.');
+      // This check is mostly redundant due to threeReady but good for safety.
+      console.error('Three.js is not defined even though threeReady is true. This should not happen.');
       return;
     }
 
@@ -33,21 +57,21 @@ const HeroParticleAnimation: React.FC = () => {
     // 3. Renderer Setup
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas,
-      alpha: true, // Make background transparent
+      alpha: true, 
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     // 4. Particle Geometry and Material
     const particlesGeometry = new THREE.BufferGeometry();
-    const count = 5000; // Number of particles
+    const count = 5000; 
 
     const positions = new Float32Array(count * 3);
-    const particleColorsArray = new Float32Array(count * 3); // Renamed to avoid conflict
+    const particleColorsArray = new Float32Array(count * 3); 
 
-    const colorLight = new THREE.Color(0x6F42C1); // Quantum Lilac for light mode
-    const colorDarkYellow = new THREE.Color(0xFFFF00); // Bright Yellow for dark mode
-    const colorDarkGreen = new THREE.Color(0x00FF00); // Bright Green for dark mode
+    const colorLight = new THREE.Color(0x6F42C1); 
+    const colorDarkYellow = new THREE.Color(0xFFFF00); 
+    const colorDarkGreen = new THREE.Color(0x00FF00); 
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
@@ -56,7 +80,7 @@ const HeroParticleAnimation: React.FC = () => {
       positions[i3 + 2] = (Math.random() - 0.5) * 10;
 
       if (theme === 'dark') {
-        if (i % 2 === 0) { // Alternate between yellow and green for dark mode
+        if (i % 2 === 0) { 
           particleColorsArray[i3] = colorDarkYellow.r;
           particleColorsArray[i3 + 1] = colorDarkYellow.g;
           particleColorsArray[i3 + 2] = colorDarkYellow.b;
@@ -65,7 +89,7 @@ const HeroParticleAnimation: React.FC = () => {
           particleColorsArray[i3 + 1] = colorDarkGreen.g;
           particleColorsArray[i3 + 2] = colorDarkGreen.b;
         }
-      } else { // Light mode
+      } else { 
         particleColorsArray[i3] = colorLight.r;
         particleColorsArray[i3 + 1] = colorLight.g;
         particleColorsArray[i3 + 2] = colorLight.b;
@@ -77,7 +101,7 @@ const HeroParticleAnimation: React.FC = () => {
     const particlesMaterial = new THREE.PointsMaterial({
       size: 0.02,
       sizeAttenuation: true,
-      vertexColors: true, // Enable vertex colors - this is key
+      vertexColors: true, 
     });
 
     const particles = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -91,7 +115,6 @@ const HeroParticleAnimation: React.FC = () => {
     const windowHalfX = window.innerWidth / 2;
     const windowHalfY = window.innerHeight / 2;
 
-    // Renamed to avoid conflict if another onDocumentMouseMove exists in global scope
     const onMouseMoveParticles = (event: MouseEvent) => {
       mouseX = (event.clientX - windowHalfX);
       mouseY = (event.clientY - windowHalfY);
@@ -115,7 +138,7 @@ const HeroParticleAnimation: React.FC = () => {
       animationFrameId = window.requestAnimationFrame(tick);
     };
 
-    tick(); // Start the animation loop
+    tick(); 
 
     // 7. Handle Window Resizing
     const handleResize = () => {
@@ -134,9 +157,8 @@ const HeroParticleAnimation: React.FC = () => {
       document.removeEventListener('mousemove', onMouseMoveParticles);
       window.removeEventListener('resize', handleResize);
       
-      // Dispose of Three.js objects
       if (scene) {
-        if (particles && particles.parent === scene) { // Check if particles is still a child before removing
+        if (particles && particles.parent === scene) { 
             scene.remove(particles);
         }
         scene.traverse(object => {
@@ -146,7 +168,7 @@ const HeroParticleAnimation: React.FC = () => {
                 // @ts-ignore PointsMaterial is Material
                 if (Array.isArray(object.material)) object.material.forEach(m => m.dispose()); else object.material.dispose();
             }
-          } else if (object instanceof THREE.Mesh) { // For any other meshes, if any
+          } else if (object instanceof THREE.Mesh) { 
             if (object.geometry) object.geometry.dispose();
             if (object.material) {
                 if (Array.isArray(object.material)) object.material.forEach(m => m.dispose()); else object.material.dispose();
@@ -158,7 +180,11 @@ const HeroParticleAnimation: React.FC = () => {
       if (particlesMaterial) particlesMaterial.dispose();
       if (renderer) renderer.dispose();
     };
-  }, [theme]); // Effect re-runs when theme changes
+  }, [theme, threeReady]); // Re-run effect if theme changes OR threeReady changes
+
+  if (!threeReady) {
+    return null; 
+  }
 
   return <canvas ref={canvasRef} className="webgl"></canvas>;
 };
