@@ -14,7 +14,7 @@ import Footer from '@/components/landing/Footer';
 
 export default function ShadowLandingPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-transparent"> {/* Changed bg-background to bg-transparent */}
       <Header />
       <main className="flex-grow">
         <Hero />
