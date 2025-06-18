@@ -4,7 +4,7 @@
 import AnimatedElement from './AnimatedElement';
 import TerminalCard from './TerminalCard';
 import { Button } from '@/components/ui/button';
-import { ListChecks, ShoppingCart, BarChartHorizontalBig, Database } from 'lucide-react'; // Removed Terminal icon as it's not used
+import { ListChecks, ShoppingCart, BarChartHorizontalBig, Database } from 'lucide-react'; 
 import { useEffect, useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -93,8 +93,7 @@ export default function TokenomicsSection() {
   }, []); 
 
   return (
-    <section id="tokenomics" className="relative py-12 md:py-16 overflow-hidden w-full" ref={sectionRef}>
-      {/* Removed local HeroParticleAnimation */}
+    <section id="tokenomics" className="relative py-12 md:py-16 overflow-hidden w-full bg-transparent" ref={sectionRef}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <AnimatedElement className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-terminal-heading text-primary">

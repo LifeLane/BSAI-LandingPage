@@ -26,7 +26,7 @@ const TerminalCard: React.FC<TerminalCardProps> = ({
   return (
     <div
       className={cn(
-        'border border-primary/60 bg-background/80 backdrop-blur-[2px] shadow-neon-primary rounded-sm overflow-hidden',
+        'border border-primary/60 bg-transparent backdrop-blur-[2px] shadow-neon-primary rounded-sm overflow-hidden',
         'flex flex-col', // Ensure flex column layout
         className
       )}

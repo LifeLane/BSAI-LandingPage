@@ -32,8 +32,7 @@ const roadmapPhases = [
 
 export default function RoadmapSection() {
   return (
-    <section id="roadmap" className="relative py-12 md:py-16 overflow-hidden">
-      {/* Removed local HeroParticleAnimation */}
+    <section id="roadmap" className="relative py-12 md:py-16 overflow-hidden bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedElement className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-terminal-heading text-primary">

@@ -1,7 +1,7 @@
 
 import AnimatedElement from './AnimatedElement';
 import TerminalCard from './TerminalCard';
-import { BarChartBig, CheckSquare, Cpu } from 'lucide-react'; // ChartColumnBig replaced with BarChartBig, SquareCheckBig with CheckSquare for availability
+import { BarChartBig, CheckSquare, Cpu } from 'lucide-react'; 
 
 const features = [
   { text: "<strong>Entry</strong> and <strong>exit</strong> zones" },
@@ -12,7 +12,6 @@ const features = [
 export default function SignalTerminalSection() {
   return (
     <section id="signal-terminal" className="relative py-12 md:py-16 bg-transparent overflow-hidden">
-      {/* Removed local HeroParticleAnimation */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedElement className="max-w-2xl mx-auto">
           <TerminalCard

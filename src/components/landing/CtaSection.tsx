@@ -41,8 +41,7 @@ export default function CtaSection() {
   };
 
   return (
-    <section id="early-access-cta" className="relative py-10 md:py-12 overflow-hidden">
-       {/* Removed local HeroParticleAnimation */}
+    <section id="early-access-cta" className="relative py-10 md:py-12 overflow-hidden bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedElement className="max-w-xl mx-auto">
           <TerminalCard
