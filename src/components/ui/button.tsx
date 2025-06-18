@@ -11,18 +11,18 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: // Neon Cyan Button
-          "bg-primary/10 text-primary border border-primary hover:bg-primary hover:text-primary-foreground hover:shadow-neon-primary focus:shadow-neon-primary rounded-sm",
+          "bg-primary text-primary-foreground border border-primary hover:bg-primary/90 hover:text-primary-foreground hover:shadow-neon-primary focus:shadow-neon-primary rounded-sm",
         destructive:
-          "bg-destructive/10 text-destructive border border-destructive hover:bg-destructive hover:text-destructive-foreground hover:shadow-md focus:shadow-md rounded-sm",
+          "bg-destructive text-destructive-foreground border border-destructive hover:bg-destructive/90 hover:text-destructive-foreground hover:shadow-md focus:shadow-md rounded-sm",
         outline: // Neon Accent (Magenta) Button
           "bg-transparent text-accent border border-accent hover:bg-accent hover:text-accent-foreground hover:shadow-neon-accent focus:shadow-neon-accent rounded-sm",
         secondary: // Darker, subtle button
-          "bg-secondary/20 text-secondary-foreground border border-secondary/50 hover:bg-secondary/40 hover:border-secondary rounded-sm",
+          "bg-secondary text-secondary-foreground border border-secondary hover:bg-secondary/80 hover:border-secondary rounded-sm",
         ghost: // For icon buttons or minimal actions
           "text-foreground/80 hover:bg-primary/10 hover:text-primary rounded-sm",
         link: "text-primary underline-offset-4 hover:underline hover:text-primary/80",
         success: // Neon Green Button
-          "bg-accent-green/10 text-accent-green border border-accent-green hover:bg-accent-green hover:text-black hover:shadow-[0_0_5px_hsl(var(--accent-green)),_0_0_10px_hsl(var(--accent-green))] focus:shadow-[0_0_5px_hsl(var(--accent-green)),_0_0_10px_hsl(var(--accent-green))] rounded-sm"
+          "bg-accent-green text-black border border-accent-green hover:bg-accent-green/90 hover:text-black hover:shadow-[0_0_5px_hsl(var(--accent-green)),_0_0_10px_hsl(var(--accent-green))] focus:shadow-[0_0_5px_hsl(var(--accent-green)),_0_0_10px_hsl(var(--accent-green))] rounded-sm"
       },
       size: {
         default: "h-9 px-4 py-2 text-xs sm:text-sm", // Adjusted for terminal feel

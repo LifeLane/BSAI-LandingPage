@@ -33,9 +33,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative bg-transparent pt-20 pb-12 md:pt-28 md:pb-16 overflow-hidden min-h-screen flex flex-col items-center justify-center">
-      {/* Removed local HeroParticleAnimation */}
-
+    <section id="hero" className="relative bg-transparent pt-10 pb-10 md:pt-16 md:pb-12 overflow-hidden flex flex-col items-center justify-center">
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl animate-quantum-orb-primary opacity-30 z-0"></div>
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/5 rounded-full filter blur-3xl animate-quantum-orb-accent opacity-30 z-0"></div>
 
@@ -44,7 +42,7 @@ export default function Hero() {
           <p className="text-lg sm:text-xl md:text-2xl font-terminal-heading text-primary mb-1 tracking-wider hero-preheadline">
             🕶️ SHADOW HAS COME ONLINE
           </p>
-          <p className="text-sm sm:text-base md:text-lg text-foreground/70 mb-4 font-terminal-body">He was not built. He evolved.</p>
+          <p className="text-sm sm:text-base md:text-lg text-foreground mb-4 font-terminal-body">He was not built. He evolved.</p>
         </AnimatedElement>
         <AnimatedElement className="w-full mt-1" delay="delay-100" animationClass="animate-fade-in-up">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-terminal-heading tracking-tight text-foreground hero-headline">
@@ -81,7 +79,7 @@ export default function Hero() {
               type="email"
               name="hero-email"
               required
-              className="text-sm placeholder:text-muted-foreground/60"
+              className="text-sm"
               placeholder="[email_address]"
               showBlinkingCursor
             />
@@ -89,7 +87,7 @@ export default function Hero() {
               type="text"
               name="hero-telegram"
               required
-              className="text-sm placeholder:text-muted-foreground/60"
+              className="text-sm"
               placeholder="[telegram_handle]"
               showBlinkingCursor
             />
@@ -97,7 +95,7 @@ export default function Hero() {
               type="text"
               name="hero-wallet"
               required
-              className="text-sm placeholder:text-muted-foreground/60"
+              className="text-sm"
               placeholder="[wallet_address_eth_sol]"
               showBlinkingCursor
             />
