@@ -36,7 +36,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative bg-transparent pt-10 pb-10 md:pt-16 md:pb-12 overflow-hidden flex flex-col items-center justify-center" // bg-transparent
+      className="relative bg-white dark:bg-[hsl(0,0%,5%)] pt-10 pb-10 md:pt-16 md:pb-12 overflow-hidden flex flex-col items-center justify-center" 
     >
       <div className="absolute inset-0 z-0 pointer-events-none opacity-100"> {/* Particle container at full opacity */}
         <HeroParticleAnimation />
