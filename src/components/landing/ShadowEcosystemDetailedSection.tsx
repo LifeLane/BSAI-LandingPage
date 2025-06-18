@@ -2,6 +2,7 @@
 import AnimatedElement from './AnimatedElement';
 import TerminalCard from './TerminalCard';
 import { Brain, Eye, Bot, Link as LinkIconLucide, Zap, RadioTower } from 'lucide-react';
+import HeroParticleAnimation from './HeroParticleAnimation'; // Added import
 
 const ecosystemItems = [
   { icon: Brain, title: 'Shadow', description: 'The quantum brain watching every chain' },
@@ -15,6 +16,9 @@ const ecosystemItems = [
 export default function ShadowEcosystemDetailedSection() {
   return (
     <section id="shadow-ecosystem" className="relative py-10 md:py-12 bg-transparent overflow-hidden">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
+        <HeroParticleAnimation />
+      </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedElement className="text-center mb-8 md:mb-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-terminal-heading text-primary">

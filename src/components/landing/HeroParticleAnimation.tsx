@@ -64,7 +64,7 @@ const HeroParticleAnimation: React.FC = () => {
 
     // 4. Particle Geometry and Material
     const particlesGeometry = new THREE.BufferGeometry();
-    const count = 5000; 
+    const count = 2500; // Reduced particle count
 
     const positions = new Float32Array(count * 3);
     const particleColorsArray = new Float32Array(count * 3); 
@@ -75,9 +75,9 @@ const HeroParticleAnimation: React.FC = () => {
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
-      positions[i3] = (Math.random() - 0.5) * 10;
-      positions[i3 + 1] = (Math.random() - 0.5) * 10;
-      positions[i3 + 2] = (Math.random() - 0.5) * 10;
+      positions[i3] = (Math.random() - 0.5) * 8; // Reduced spread
+      positions[i3 + 1] = (Math.random() - 0.5) * 8; // Reduced spread
+      positions[i3 + 2] = (Math.random() - 0.5) * 8; // Reduced spread
 
       if (theme === 'dark') {
         if (i % 2 === 0) { 

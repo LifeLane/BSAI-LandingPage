@@ -2,6 +2,7 @@
 import AnimatedElement from './AnimatedElement';
 import TerminalCard from './TerminalCard';
 import { BarChartBig, CheckSquare, Cpu } from 'lucide-react'; 
+import HeroParticleAnimation from './HeroParticleAnimation'; // Added import
 
 const features = [
   { text: "<strong>Entry</strong> and <strong>exit</strong> zones" },
@@ -12,6 +13,9 @@ const features = [
 export default function SignalTerminalSection() {
   return (
     <section id="signal-terminal" className="relative py-12 md:py-16 bg-transparent overflow-hidden">
+       <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
+        <HeroParticleAnimation />
+      </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedElement className="max-w-2xl mx-auto">
           <TerminalCard

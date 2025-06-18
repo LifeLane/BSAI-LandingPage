@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import AnimatedElement from './AnimatedElement';
 import gsap from 'gsap';
 import SplitType from 'split-type';
+import HeroParticleAnimation from './HeroParticleAnimation'; // Added import
 
 const hooks = [
   "🎯 PUBLIC TOKEN SALE BEGINS SOON",
@@ -73,7 +74,9 @@ export default function PartnersSection() {
   return (
     <AnimatedElement animationClass="animate-fade-in-up">
       <section id="animated-hooks-bar" className="relative py-6 md:py-8 border-y border-primary/40 bg-transparent overflow-hidden">
-        {/* Removed local HeroParticleAnimation */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
+          <HeroParticleAnimation />
+        </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-center overflow-hidden relative z-10">
           <h2
             ref={h2Ref}

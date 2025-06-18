@@ -5,7 +5,7 @@ import Script from 'next/script';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from '@/components/ThemeProvider';
-import HeroParticleAnimation from '@/components/landing/HeroParticleAnimation';
+// Removed HeroParticleAnimation import
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -48,7 +48,7 @@ export default function RootLayout({
       </head>
       <body className="font-terminal-body antialiased text-foreground"> {/* Removed bg-background */}
         <ThemeProvider defaultTheme="dark" storageKey="shadow-theme">
-          <HeroParticleAnimation />
+          {/* Removed HeroParticleAnimation from here */}
           {children}
           <Toaster />
         </ThemeProvider>

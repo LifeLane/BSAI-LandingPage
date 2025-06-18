@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { useToast } from "@/hooks/use-toast";
 import type React from 'react';
 import { ChevronRight } from 'lucide-react';
+import HeroParticleAnimation from './HeroParticleAnimation';
 
 export default function Hero() {
   const { toast } = useToast();
@@ -34,6 +35,9 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative bg-transparent pt-10 pb-10 md:pt-16 md:pb-12 overflow-hidden flex flex-col items-center justify-center">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
+        <HeroParticleAnimation />
+      </div>
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl animate-quantum-orb-primary opacity-30 z-0"></div>
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/5 rounded-full filter blur-3xl animate-quantum-orb-accent opacity-30 z-0"></div>
 

@@ -2,10 +2,14 @@
 import AnimatedElement from './AnimatedElement';
 import TerminalCard from './TerminalCard';
 import { Target, Eye, Terminal } from 'lucide-react';
+import HeroParticleAnimation from './HeroParticleAnimation'; // Added import
 
 export default function AboutSection() {
   return (
-    <section id="origin-story-mission-vision" className="relative py-12 md:py-16 overflow-hidden bg-transparent">
+    <section id="origin-story-mission-vision" className="relative py-12 md:py-16 bg-transparent overflow-hidden">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
+        <HeroParticleAnimation />
+      </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 gap-8 md:gap-10 items-start">
           <AnimatedElement>
@@ -14,7 +18,7 @@ export default function AboutSection() {
               titleIcon={<Terminal className="h-4 w-4" />}
               className="w-full"
               contentClassName="text-base md:text-lg"
-              footerContent="> BlockSmith forged the code. Shadow became the code."
+              footerContent="> BlockShadow forged the code. Shadow became the code."
             >
               <p className="mb-3 text-foreground/90">
                 Shadow wasn’t coded.

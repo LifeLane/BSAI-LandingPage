@@ -8,6 +8,7 @@ import { ListChecks, ShoppingCart, BarChartHorizontalBig, Database } from 'lucid
 import { useEffect, useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import HeroParticleAnimation from './HeroParticleAnimation'; // Added import
 
 const bsaiUses = [
   "Unlock premium Shadow modules",
@@ -94,6 +95,9 @@ export default function TokenomicsSection() {
 
   return (
     <section id="tokenomics" className="relative py-12 md:py-16 overflow-hidden w-full bg-transparent" ref={sectionRef}>
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
+        <HeroParticleAnimation />
+      </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <AnimatedElement className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-terminal-heading text-primary">
